@@ -43,5 +43,5 @@ my-project/
 https://materialdesignicons.com/
 
 # Mode mobile
+![image](https://github.com/Multi-commerces/sveltekit-starter/assets/55719162/9d4e7b63-6ac5-4dcc-8871-28bdad3f3baf)
 
-![image](https://user-images.githubusercontent.com/55719162/212486781-9278f566-cf76-47e9-8a08-e8a3e608c744.png)
