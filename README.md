@@ -9,6 +9,9 @@ Un exemple de projet implémentant [Svelte Material UI](https://github.com/hperr
 2. `npm install`
 3. `npm run dev -- --open`
 
+# Composant FontAwesome pour Svelte
+https://cweili.github.io/svelte-fa/
+
 # Un projet SvelteKit typique ressemble à ceci :
 
 ```

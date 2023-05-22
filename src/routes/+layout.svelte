@@ -3,7 +3,9 @@
 	import BottomAppBar from '@smui/top-app-bar';
 	import TopAppBar, { Row, Section, Title, AutoAdjust } from '@smui/top-app-bar';
 	import IconButton from '@smui/icon-button';
-	import { Label, Icon } from '@smui/common';
+	import { Label } from '@smui/common';
+	import Fa from 'svelte-fa';
+	import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 	let topAppBar;
 
@@ -37,16 +39,15 @@
 							<Label>{lightTheme ? 'Lights off' : 'Lights on'}</Label>
 						</Button>
 					</div>
-					<IconButton
-						class="material-icons"
-						aria-label="GitHub"
-						href="https://github.com/hperrin/svelte-material-ui">git</IconButton
-					>
-					<IconButton
-						class="material-icons"
-						aria-label="Demo Site"
-						href="https://sveltematerialui.com">mail</IconButton
-					>
+					<IconButton aria-label="Demo Site" href="https://sveltematerialui.com">
+						<Fa icon={faLinkedinIn} />
+					</IconButton>
+
+					<IconButton aria-label="Demo Site" href="https://sveltematerialui.com">
+						<Fa icon={faGithub} />
+					</IconButton>
+				
+					
 				</Section>
 			</Row>
 		</TopAppBar>
