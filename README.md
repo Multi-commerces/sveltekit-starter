@@ -10,6 +10,7 @@ Un exemple de projet implémentant [Svelte Material UI](https://github.com/hperr
 3. `npm run dev -- --open`
 
 # Composant FontAwesome pour Svelte
+
 https://cweili.github.io/svelte-fa/
 
 # Un projet SvelteKit typique ressemble à ceci :
@@ -43,5 +44,5 @@ my-project/
 https://materialdesignicons.com/
 
 # Mode mobile
-![image](https://github.com/Multi-commerces/sveltekit-starter/assets/55719162/d07137c8-3159-40c4-a670-dcecec696cc8)
 
+![image](https://github.com/Multi-commerces/sveltekit-starter/assets/55719162/d07137c8-3159-40c4-a670-dcecec696cc8)

@@ -14,6 +14,8 @@ const config = {
 		//out: 'build',
 		//precompress: false,
 		//envPrefix: ''
+
+		// plugins: []
 	},
 	// https://kit.svelte.dev/docs/configuration#csrf
 	csrf: false,

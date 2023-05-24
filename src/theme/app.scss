@@ -3,13 +3,23 @@
 // MDC Typography
 //
 @use '@material/typography/mdc-typography';
-
 html,
 body {
 	padding: 0;
 	margin: 0;
 }
 
-.container {
-	padding: 0 30px;
+.full-width {
+	width: 100% !important;
+}
+
+nav {
+	background-color: white !important;
+	max-height: 48px;
+}
+
+main {
+	position: relative;
+	z-index: 1;
+	margin-top: 120px;
 }
