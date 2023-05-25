@@ -1,166 +1,128 @@
-<script lang="ts">
-	import LayoutGrid, { Cell } from '@smui/layout-grid';
-	import { Content, Title } from '@smui/paper';
-	import Paper from '@smui/paper/src/Paper.svelte';
+<script>
 	import Textfield from '@smui/textfield';
 	import CharacterCounter from '@smui/textfield/character-counter';
-	import Icon from '@smui/textfield/icon';
 	import HelperText from '@smui/textfield/helper-text';
-	import Fa from 'svelte-fa';
-	import { faClock, faHeadset, faCogs, faHandshake } from '@fortawesome/free-solid-svg-icons';
+	import Icon from '@smui/textfield/icon';
+	import Flex from 'svelte-flex';
+	import Button from '@smui/button';
+	import Article from '../../components/Article.svelte';
+	import LayoutGrid from '@smui/layout-grid/src/LayoutGrid.svelte';
+	import Cell from '@smui/layout-grid/src/Cell.svelte';
+	import { onMount } from 'svelte';
+	// import { enhance } from '$app/forms';
 
-	let name = '';
-	let email = '';
-	let objet: string;
-	let message = '';
+	/** @type {import('./$types').ActionData} */
+	export let form;
+
+	/** @type {import('./$types').Data} */
+	export let data;
+
+	let tel = '(+33) 6 00 01 02';
+	let email = 'julien.ilari@gmail.com';
+	let subject = 'premier contact';
+	let message = 'Bonjour, est-il possible de me contacter (préférence mardi 10h00)';
+
+	onMount(async () => {
+		
+	});
 </script>
 
-<LayoutGrid class="paper-container">
-	<Cell span={12}>
-		<Paper color="primary" variant="unelevated" class="paper">
-			<Title tag="h2">Me contacter</Title>
-			<Content>
-				<div>
-					<img src="/chien.png" alt="chien content" style="float: left;" width="100" />
-					Bienvenue sur ma page de contact ! <br /><br />
-
-					Je suis ravi de vous offrir un moyen simple et pratique de me contacter pour toutes vos
-					questions, demandes de renseignements ou collaborations potentielles. <br />
-					Cette page est spécialement conçue pour vous permettre de rester en contact avec moi et d'obtenir
-					rapidement une réponse personnalisée à vos besoins.
-				</div>
-				<div>
-					<p>
-						N'hésitez pas à utiliser le formulaire de contact ci-dessous ou à m'envoyer un e-mail
-						directement. Je suis impatient de vous aider et de répondre à toutes vos demandes.
-					</p>
-
-					Merci de votre intérêt et à bientôt !
-					<br />
-					[Julien ILARI] - Freelance
-				</div>
-			</Content>
-		</Paper>
+<Article title="Me contacter" span={12}>
+	<Cell spanDevices={{ desktop: 12, tablet: 12, phone: 12 }}>
+		<div style="height:100%;float: left;">
+			<img src="/chien.png" alt="chien content" width="50" />
+		</div>
+		<div>
+			<p>Bienvenue sur ma page de contact !</p>
+			<p>
+				Je suis ravi de vous offrir un moyen simple et pratique de me contacter pour toutes vos
+				questions, demandes de renseignements ou collaborations potentielles.
+			</p>
+		</div>
 	</Cell>
-
 	<Cell spanDevices={{ desktop: 4, tablet: 12, phone: 12 }}>
-		<Paper variant="unelevated" class="paper">
-			<Title tag="h2">Formulaire de contact</Title>
-			<div class="test">
-				<Textfield
-					class="shaped-outlined full-width"
-					variant="outlined"
-					bind:value={email}
-					label="e-mail"
-				>
-					<Icon class="material-icons" slot="leadingIcon">mail</Icon>
-					<HelperText slot="helper">Votre adresse e-mail pro/personnel</HelperText>
-				</Textfield>
-				<Textfield
-					class="shaped-outlined full-width"
-					variant="outlined"
-					bind:value={name}
-					label="téléphone"
-				>
-					<Icon class="material-icons" slot="leadingIcon">phone</Icon>
-					<HelperText slot="helper">Votre numéro de téléphone pro/personnel</HelperText>
-				</Textfield>
-				<Textfield
-					class="shaped-outlined full-width"
-					variant="outlined"
-					bind:value={name}
-					label="objet"
-				>
-					<Icon class="material-icons" slot="leadingIcon">data_object</Icon>
-					<HelperText slot="helper">Objet du message</HelperText>
-				</Textfield>
-				<Textfield
-					class="shaped-outlined full-width"
-					textarea
-					input$maxlength={100}
-					bind:value={message}
-					label="message"
-				>
-					<CharacterCounter slot="internalCounter">0 / 100</CharacterCounter>
-					<HelperText slot="helper">Votre message</HelperText>
-				</Textfield>
+		{#if form?.success}
+			<p>Nous avons bien reçu votre message, merci !</p>
+			<p>{form?.message} ou {data?.message} email : {form?.email}</p>
+		{/if}
+		{#if form?.missing}<p class="error">The email field is required</p>{/if}
+		{#if form?.incorrect}<p class="error">Invalid credentials!</p>{/if}
+		<form method="POST" action="?/send">
+			<Textfield
+				class="shaped-outlined full-width"
+				variant="outlined"
+				bind:value={email}
+				label="email"
+				required
+			>
+				<Icon class="material-icons" slot="leadingIcon">mail</Icon>
+				<HelperText slot="helper">Votre mail</HelperText>
+			</Textfield>
+			<Textfield
+				class="shaped-outlined full-width"
+				variant="outlined"
+				bind:value={tel}
+				label="téléphone"
+			>
+				<Icon class="material-icons" slot="leadingIcon">phone</Icon>
+				<HelperText slot="helper">Votre numéro de téléphone</HelperText>
+			</Textfield>
+			<Textfield
+				class="shaped-outlined full-width"
+				variant="outlined"
+				bind:value={subject}
+				label="subject"
+				required
+			>
+				<Icon class="material-icons" slot="leadingIcon">data_object</Icon>
+				<HelperText slot="helper">Objet du message</HelperText>
+			</Textfield>
+			<Textfield
+				class="shaped-outlined full-width"
+				variant="outlined"
+				textarea
+				input$maxlength={200}
+				input$rows={6}
+				bind:value={message}
+				label="message"
+				required
+			>
+				<CharacterCounter slot="internalCounter">0 / 100</CharacterCounter>
+				<HelperText slot="helper">Votre message</HelperText>
+			</Textfield>
+			<input type="hidden" name="email" bind:value={email} />
+			<input type="hidden" name="tel" bind:value={tel} />
+			<input type="hidden" name="subject" bind:value={subject} />
+			<input type="hidden" name="message" bind:value={message} />
+			<div>
+				<Button>Annuler</Button>
+				<Button touch variant="raised">Envoyer</Button>
 			</div>
-		</Paper>
+		</form>
 	</Cell>
 	<Cell spanDevices={{ desktop: 8, tablet: 12, phone: 12 }}>
-		<Paper color="secondary" variant="unelevated" class="paper">
-			<Title tag="h2">
-				<b>Voici quelques raisons pour lesquelles vous devriez utiliser ma page de contact :</b>
-			</Title>
-			<Content>
-				<ul>
-					<li>
-						<h3>
-							<Fa icon={faClock} />
-							<b>Réponses rapides :</b>
-						</h3>
-						<p>
-							Je comprends que votre temps est précieux, c'est pourquoi je m'engage à vous répondre
-							dans les plus brefs délais. <br />
-							Que vous ayez besoin d'informations sur mes services, de discuter de votre projet ou de
-							demander des conseils, je suis là pour vous aider.
-						</p>
-					</li>
-					<li>
-						<h3>
-							<Fa icon={faHeadset} />
-							<b>Service client personnalisé :</b>
-						</h3>
-						<p>
-							Votre satisfaction est ma priorité absolue. <br />
-							En tant que freelance, je suis dévoué à fournir un service client de haute qualité.
-							<br />
-							N'hésitez pas à me contacter pour toute question, demande spécifique ou suggestion.
-							<br />
-							Je suis là pour vous accompagner tout au long de notre collaboration.
-						</p>
-					</li>
-					<li>
-						<h3>
-							<Fa icon={faCogs} />
-							<b>Projets sur mesure :</b>
-						</h3>
-						<p>
-							Si vous avez des demandes particulières, des besoins spécifiques ou des projets
-							personnalisés, ma page de contact est l'endroit idéal pour commencer.
-							<br />Fournissez-moi tous les détails nécessaires et nous travaillerons ensemble pour
-							trouver la meilleure solution qui réponde à vos attentes.
-						</p>
-					</li>
-
-					<li>
-						<h3><Fa icon={faHandshake} /><b>Opportunités de collaboration :</b></h3>
-						<p>
-							Si vous êtes intéressé par une collaboration ou un partenariat, je suis ouvert aux
-							nouvelles idées et aux possibilités de travail ensemble. <br />Contactez-moi via ma
-							page de contact et je serai ravi de discuter de vos propositions.
-						</p>
-					</li>
-				</ul>
-			</Content>
-		</Paper>
+		<div>
+			<p>
+				Cette page est spécialement conçue pour vous permettre de rester en contact avec moi et
+				d'obtenir rapidement une réponse à vos question.
+			</p>
+			<p>
+				N'hésitez pas à utiliser le formulaire de contact ci-dessous ou à m'envoyer un e-mail
+				directement. Je suis impatient de vous aider et de répondre à toutes vos demandes.
+			</p>
+			<br />
+			<div>
+				Merci de votre intérêt et à bientôt !<br />
+				[Julien ILARI] - Freelance
+			</div>
+		</div>
 	</Cell>
-</LayoutGrid>
+	<Cell>
+		<img src="/contact_QR_code.png" alt="QR Code" />
+	</Cell>
+</Article>
 
 <style>
-	ul {
-		margin: 0;
-		padding: 0;
-		padding-left: 1rem;
-	}
-
-	li {
-		display: block;
-		margin: 0;
-		padding: 0;
-	}
-
-	b {
-		color: rgb(7, 38, 80);
+	@media screen and (min-width: 801px) {
 	}
 </style>

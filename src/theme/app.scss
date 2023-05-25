@@ -3,23 +3,125 @@
 // MDC Typography
 //
 @use '@material/typography/mdc-typography';
-html,
-body {
+
+* {
 	padding: 0;
 	margin: 0;
 }
 
-.full-width {
-	width: 100% !important;
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 
-nav {
-	background-color: white !important;
-	max-height: 48px;
+html,
+body {
+	position: relative;
+	top: 0;
+	left: 0;
+	min-height: 100%;
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background: url(/bg2.png) no-repeat;
+	-webkit-background-size: 100vw 100vh;
+	-moz-background-size: 100vw 100vh;
+	-o-background-size: 100vw 100vh;
+	background-size: 100vw 100vh;
+	background-position-y: 112px;
+}
+
+header {
+	position: sticky;
+	top: 0;
+
+	nav {
+		background-color: white !important;
+		max-height: 48px;
+	}
 }
 
 main {
 	position: relative;
-	z-index: 1;
-	margin-top: 120px;
+	overflow-y: auto;
+	height: 100%;
+	opacity: 92%;
+	article {
+		margin: auto;
+	}
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+	/* Vos styles CSS pour les appareils mobiles ici */
+	.hidden-mobile {
+		display: none !important;
+	}
+}
+
+/* Tablettes */
+@media (min-width: 768px) and (max-width: 1023px) {
+	/* Vos styles CSS pour les tablettes ici */
+}
+
+/* Mobile ou tablette */
+@media (max-width: 1023px) {
+	/* Vos styles CSS pour les appareils mobiles ou tablettes ici */
+	:root {
+		--mdc-shape-medium: initial !important;
+	}
+	main {
+		padding: 112px 0;
+		article {
+			width: 100%;
+		}
+	}
+}
+
+/* Ordinateurs de bureau ou Grand écran */
+@media (min-width: 1024px) {
+	/* Vos styles CSS pour les ordinateurs de bureau ou grands écrans ici */
+	main {
+		padding: calc(112px + 1rem) 1rem;
+		article {
+			width: 100%;
+		}
+	}
+}
+
+/* Ordinateurs de bureau */
+@media (min-width: 1024px) and (max-width: 1199px) {
+	/* Vos styles CSS pour les ordinateurs de bureau ici */
+	main {
+		article {
+			width: 80%;
+		}
+	}
+}
+
+/* Grand écran / haute résolution */
+@media (min-width: 1200px) {
+	/* Vos styles CSS pour les grands écrans ou les écrans haute résolution ici */
+	main {
+		article {
+			width: 70%;
+		}
+	}
+}
+
+/*
+* CSS utilitaire
+*/
+.full-width {
+	width: 100% !important;
+}
+
+.line {
+	display: block;
+	width: 45px;
+	height: 1.5px;
+	background-color: #f85c70;
 }

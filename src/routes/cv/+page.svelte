@@ -1,98 +1,85 @@
-<script lang="ts">
+<script>
 	import LayoutGrid, { Cell } from '@smui/layout-grid';
 	import Paper, { Content, Title } from '@smui/paper';
+	import Flex from 'svelte-flex';
 </script>
-
-<LayoutGrid class="paper-container">
-	<Cell span={12}>
-		<div class="paper-container">
-			<Paper color="primary" class="paper">
-				<Title>Mon CV</Title>
-				<Content>
-					<img src="/animaux/547.png" alt="chien content" style="float: left;" width="100" />
-					Le développement Back-End est une de mes passions : <br />
-					concevoir, développer et maintenir des services métiers et des API REST.<br />
-					<br />
-					Sérieux, adaptable, autonome et passionné, j’aime apprendre de nouvelles technologies, passer
-					du temps à résoudre des problèmes et réaliser du code de qualité.
-				</Content>
-			</Paper>
-		</div>
-	</Cell>
-</LayoutGrid>
-<hr />
 
 <div>
 	<!-- Page Container -->
-	<div class="w3-content w3-margin-top" style="max-width:1400px;">
+	<div class="w3-content" style="max-width:1400px;">
 		<!-- The Grid -->
-		<div class="w3-row-padding">
+		<Flex align="start" direction="row">
 			<!-- Left Column -->
-			<div class="w3-third">
+			<div class="w3-third-test">
 				<div class="w3-white w3-text-grey w3-card-4">
 					<div class="w3-display-container">
-						<img
-							src="https://www.w3schools.com/w3images/avatar_hat.jpg"
-							style="width:100%"
-							alt="Avatar"
-						/>
+						<img src="/IMG-1375.JPG" style="width:100%;" alt="Avatar" />
 						<div class="w3-display-bottomleft w3-container w3-text-black">
-							<h2>Jane Doe</h2>
+							<h2>Julien ILARI</h2>
 						</div>
 					</div>
 					<div class="w3-container">
-						<p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal" />Designer</p>
-						<p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal" />London, UK</p>
+						<br />
 						<p>
-							<i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal" />ex@mail.com
+							<i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal" />Dév.
+							Full-Stack/Java
 						</p>
-						<p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal" />1224435534</p>
+						<p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal" />Aubagne, FR</p>
+						<p>
+							<i
+								class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"
+							/>julien.ilari@gmail.com
+						</p>
+						<p>
+							<i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal" />06.73.20.06.25
+						</p>
 						<hr />
 
 						<p class="w3-large">
-							<b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal" />Skills</b>
+							<b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal" />Compétences</b>
 						</p>
-						<p>Adobe Photoshop</p>
-						<div class="w3-light-grey w3-round-xlarge w3-small">
-							<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">
-								90%
-							</div>
-						</div>
-						<p>Photography</p>
-						<div class="w3-light-grey w3-round-xlarge w3-small">
-							<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
-								<div class="w3-center w3-text-white">80%</div>
-							</div>
-						</div>
-						<p>Illustrator</p>
-						<div class="w3-light-grey w3-round-xlarge w3-small">
-							<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">
-								75%
-							</div>
-						</div>
-						<p>Media</p>
-						<div class="w3-light-grey w3-round-xlarge w3-small">
-							<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">
-								50%
-							</div>
-						</div>
-						<br />
-
-						<p class="w3-large w3-text-theme">
-							<b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal" />Languages</b>
-						</p>
-						<p>English</p>
-						<div class="w3-light-grey w3-round-xlarge">
-							<div class="w3-round-xlarge w3-teal" style="height:24px;width:100%" />
-						</div>
-						<p>Spanish</p>
-						<div class="w3-light-grey w3-round-xlarge">
-							<div class="w3-round-xlarge w3-teal" style="height:24px;width:55%" />
-						</div>
-						<p>German</p>
-						<div class="w3-light-grey w3-round-xlarge">
-							<div class="w3-round-xlarge w3-teal" style="height:24px;width:25%" />
-						</div>
+						<ul class="skills svelte-11398s7">
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle" />
+								HTML5 | CSS3 | Javascript
+							</li>
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle" /> SVELTE
+							</li>
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle" /> REACT
+							</li>
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle" /> GWT | Spring Web MVC
+							</li>
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle" /> JAVA EE (JSF,CDI,EJB,JPA ...)
+							</li>
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle" /> SPRING
+							</li>
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle" /> QUARKUS (MicroProfile)
+							</li>
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle" /> LOMBOOK
+							</li>
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle" /> MAPSTRUCT
+							</li>
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle" /> API RESTful
+							</li>
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle text-darkblue svelte-11398s7" /> Hateoas | Json:API
+							</li>
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle text-darkblue svelte-11398s7" /> Git | Github
+							</li>
+							<li class="svelte-11398s7">
+								<i class="icon fas fa-check-circle text-darkblue svelte-11398s7" /> SONAR CLOUD
+							</li>
+						</ul>
 						<br />
 					</div>
 				</div>
@@ -103,40 +90,47 @@
 
 			<!-- Right Column -->
 			<div class="w3-twothird">
-				<div class="w3-container w3-card w3-white w3-margin-bottom">
+				<div class="w3-container w3-card w3-white">
 					<h2 class="w3-text-grey w3-padding-16">
-						<i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal" />Work
-						Experience
+						<i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal" />
+						<div style="display:inline-block">
+							EXPÉRIENCE PROFESSIONELLE
+							<div class="line" />
+						</div>
 					</h2>
 					<div class="w3-container">
-						<h5 class="w3-opacity"><b>Front End Developer / w3schools.com</b></h5>
+						<h5 class="w3-opacity"><b>Développeur Fullstack Java / OCEAN (Orange BS)</b></h5>
 						<h6 class="w3-text-teal">
-							<i class="fa fa-calendar fa-fw w3-margin-right" />Jan 2015 -
+							<i class="fa fa-calendar fa-fw w3-margin-right" />Juil. 2020 -
 							<span class="w3-tag w3-teal w3-round">Current</span>
 						</h6>
 						<p>
-							Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur
-							est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque
-							repellendus iure, iste.
+							OceanV3, logiciel de Gestion de Flotte Projets en équipe, utilisation quotidienne de
+							JIRA, JETKINS et Git.<br />
+							Développement GWT (SPRING web mvc, java 11). <br />
+							Développement du nouveau front en REACT. <br />
+							<br />
+							Environnement :<br />
+							JIRA, SWAGGER, POSTMAN, DOCKER, JETKINS, GWT, Spring, Java 11, Postgres, Git
 						</p>
 						<hr />
 					</div>
 					<div class="w3-container">
-						<h5 class="w3-opacity"><b>Web Developer / something.com</b></h5>
+						<h5 class="w3-opacity"><b>Développeur Java / Inetum (GFI Informatique)</b></h5>
 						<h6 class="w3-text-teal">
-							<i class="fa fa-calendar fa-fw w3-margin-right" />Mar 2012 - Dec 2014
+							<i class="fa fa-calendar fa-fw w3-margin-right" />juil. 2018 - juil. 2020 | CPR SNCF
 						</h6>
 						<p>
-							Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt
-							aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde
-							doloremque repellendus iure, iste.
+							Correction et évolution des applications Java EE<br />
+							Réécriture d'une application JSF 1 en JSF 2.x<br />
+							Rédiger la documentation technique et le rapport de tests<br />
 						</p>
 						<hr />
 					</div>
 					<div class="w3-container">
-						<h5 class="w3-opacity"><b>Graphic Designer / designsomething.com</b></h5>
+						<h5 class="w3-opacity"><b>Concepteur développeur / Atos (BULL)</b></h5>
 						<h6 class="w3-text-teal">
-							<i class="fa fa-calendar fa-fw w3-margin-right" />Jun 2010 - Mar 2012
+							<i class="fa fa-calendar fa-fw w3-margin-right" />aoùt. 2010 juil. 2018
 						</h6>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 						<br />
@@ -145,7 +139,11 @@
 
 				<div class="w3-container w3-card w3-white">
 					<h2 class="w3-text-grey w3-padding-16">
-						<i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal" />Education
+						<i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal" />
+						<div style="display:inline-block">
+							Éducation
+							<div class="line" />
+						</div>
 					</h2>
 					<div class="w3-container">
 						<h5 class="w3-opacity"><b>W3Schools.com</b></h5>
@@ -175,26 +173,33 @@
 			</div>
 
 			<!-- End Grid -->
-		</div>
+		</Flex>
 
 		<!-- End Page Container -->
 	</div>
-
-	<footer class="w3-container w3-teal w3-center w3-margin-top">
-		<p>Find me on social media.</p>
-		<i class="fa fa-facebook-official w3-hover-opacity" />
-		<i class="fa fa-instagram w3-hover-opacity" />
-		<i class="fa fa-snapchat w3-hover-opacity" />
-		<i class="fa fa-pinterest-p w3-hover-opacity" />
-		<i class="fa fa-twitter w3-hover-opacity" />
-		<i class="fa fa-linkedin w3-hover-opacity" />
-		<p>
-			Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
-		</p>
-	</footer>
 </div>
 
 <style>
 	@import url('https://www.w3schools.com/w3css/4/w3.css');
 	@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+	li {
+		list-style-type: none;
+	}
+	.w3-third-test {
+		float: left;
+	}
+
+	@media screen and (max-width: 800px) {
+		.w3-third-test {
+			width: 100%;
+		}
+	}
+
+	
+	@media screen and (min-width: 801px) {
+		.w3-third-test {
+			width: 33.33333%;
+		}
+	}
 </style>

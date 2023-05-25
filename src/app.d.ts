@@ -14,4 +14,10 @@ declare module '@fortawesome/pro-solid-svg-icons/index.es' {
 	export * from '@fortawesome/pro-solid-svg-icons';
 }
 
+declare module '/node_modules/svelte-carousel/src/main.js' {
+	export * from 'svelte-carousel';
+}
 
+declare module '/node_modules/svelte-flex/lib/index.js' {
+	export * from 'svelte-flex';
+}

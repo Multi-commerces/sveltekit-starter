@@ -2,8 +2,9 @@
 	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
 		"ignoreDeprecations": "5.0",
-		"allowJs": true,
-		"checkJs": true,
+		"noImplicitReturns": true,
+		"allowJs": false,
+		"checkJs": false,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
@@ -15,4 +16,6 @@
 			*/
 		"noImplicitAny": true
 	}
+	// "include": ["src/**/*"],
+	// "exclude": ["node_modules", "build/**/*"]
 }
