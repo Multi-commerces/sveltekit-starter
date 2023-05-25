@@ -3,23 +3,140 @@
 // MDC Typography
 //
 @use '@material/typography/mdc-typography';
-html,
-body {
+
+* {
 	padding: 0;
 	margin: 0;
 }
 
-.full-width {
-	width: 100% !important;
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 
-nav {
-	background-color: white !important;
-	max-height: 48px;
+html {
+	height: 100%;
+}
+
+body::before {
+	content: '';
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	
+	z-index: -1; /* Keep the background behind the content */
+	background: url(/bg2.png) no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position-y: 48px;
+}
+
+body {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	position: fixed;
+	width: 100vw;
+	top: 0 !important;
+	left: 0;
 }
 
 main {
 	position: relative;
-	z-index: 1;
-	margin-top: 120px;
+	overflow-y: auto;
+	opacity: 90%;
+	overflow-y: inherit;
+
+	#main-container {
+		width: 100%;
+	}
+	article {
+		margin: auto;
+	}
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+	/* Vos styles CSS pour les appareils mobiles ici */
+	.hidden-mobile {
+		display: none !important;
+	}
+}
+
+/* Tablettes / Petit ordinateur */
+@media (min-width: 768px) and (max-width: 991px) {
+	/* Vos styles CSS pour les tablettes ici */
+	
+}
+
+/* Mobile / Tablettes / petit ordinateur  */
+@media (max-width: 991px) {
+	/* Vos styles CSS pour les appareils mobiles ou tablettes ici */
+	:root {
+		--mdc-shape-medium: initial !important;
+	}
+	main {
+		#main-container {
+			margin-top: 0;
+		}
+		article {
+			width: 100%;
+		}
+	}
+}
+
+/* Ordinateurs de bureau ou Grand écran */
+@media (min-width: 992px) {
+	/* Vos styles CSS pour les ordinateurs de bureau ou grands écrans ici */
+	main {
+		#main-container {
+			margin-top: 1rem;
+		}
+
+		// padding: calc(96px + 1rem) 1rem !important;
+		article {
+			width: 90%;
+		}
+	}
+}
+
+/* Ordinateurs de bureau */
+@media (min-width: 992px) and (max-width: 1199px) {
+	/* Vos styles CSS pour les ordinateurs de bureau ici */
+	
+}
+
+/* Grand écran / haute résolution */
+@media (min-width: 1200px) {
+	/* Vos styles CSS pour les grands écrans ou les écrans haute résolution ici */
+	
+}
+
+/*
+* CSS utilitaire
+*/
+.line {
+	display: block;
+	width: 45px;
+	height: 1.5px;
+	background-color: #f85c70;
 }

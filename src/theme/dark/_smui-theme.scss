@@ -1,13 +1,11 @@
 @use 'sass:color';
-
 @use '@material/theme/color-palette';
 
-$background: #000;
-
 // Svelte Colors! (Dark Theme)
+$background: #272728db;
 @use '@material/theme/index' as theme with (
-	$primary: rgb(83, 117, 158),
-	$secondary: color.scale(#646a86, $whiteness: -10%),
+	$primary: rgb(0, 141, 24),
+	$secondary: color.scale(#0d0d0fdb, $whiteness: -10%),
 	$surface: color.adjust(color-palette.$grey-900, $blue: +4),
 	$background: $background,
 	$error: color-palette.$red-700
@@ -17,8 +15,8 @@ $background: #000;
 
 html,
 body {
-	background-color: rgb(37, 37, 37);
-	color: if(theme.contrast-tone($background) == 'dark', #000, #fff);
+	// background-color: $background;
+	color: if(theme.contrast-tone($background) == 'dark', #000, #dbdbdbec);
 }
 
 a {

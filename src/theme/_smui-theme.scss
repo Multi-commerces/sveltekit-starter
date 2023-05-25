@@ -2,11 +2,11 @@
 @use 'sass:color';
 @use '@material/theme/color-palette';
 
-$background: white;
+$background: rgba(202, 199, 199, 0.74);
 @use '@material/theme/index' as theme with (
 	$primary: rgb(59, 72, 108),
 	$secondary: rgb(236, 236, 236),
-	$surface: #fff,
+	$surface: #ffffffd7,
 	$background: $background,
 	$error: color-palette.$red-900
 );
@@ -15,12 +15,12 @@ $background: white;
 
 html,
 body {
-	background-color: #f1f1f1;
-	color: if(theme.contrast-tone($background) == 'dark', #000, #fff);
+	// background-color: $background;
+	color: if(theme.contrast-tone($background) == 'dark', #000, rgba(202, 199, 199, 0.74));
 }
 
 header {
-	color: if(theme.contrast-tone($background) == 'dark', #000, #fff);
+	color: if(theme.contrast-tone($background) == 'dark', #000, rgba(202, 199, 199, 0.74));
 }
 
 * :global(.shaped-outlined .mdc-notched-outline .mdc-notched-outline__leading) {

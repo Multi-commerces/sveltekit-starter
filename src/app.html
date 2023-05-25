@@ -7,19 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<!-- Material Icons -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
-		<!-- SMUI Styles -->
-		<link
-			rel="stylesheet"
-			href="%sveltekit.assets%/smui.css"
-			media="(prefers-color-scheme: light)"
-		/>
-		<link
-			rel="stylesheet"
-			href="%sveltekit.assets%/smui-dark.css"
-			media="screen and (prefers-color-scheme: dark)"
-		/>
+		<link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></noscript>
 
 		%sveltekit.head%
 	</head>
@@ -28,21 +17,22 @@
 		@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
 		@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
+		/* Layout grid spacing. */
 		:root {
-			--mdc-layout-grid-gutter-phone: 0px;
-			--mdc-layout-grid-gutter-tablet: 0px;
-
-			--mdc-layout-grid-margin-desktop: 0;
-			--mdc-layout-grid-margin-phone: 0;
-			--mdc-layout-grid-margin-tablet: 0;
-			--mdc-typography-body1-font-family: 'Roboto';
-			--mdc-typography-headline5-font-family: 'Roboto';
-			--mdc-typography-font-family: 'Roboto';
-			--mdc-typography-body1-font-size: 1rem;
+		/* --mdc-layout-grid-margin-desktop: calc(112px + 1rem) 1rem;
+		--mdc-layout-grid-margin-phone: 112px 0;
+		--mdc-layout-grid-margin-tablet: 112px 0; */
+		--mdc-typography-body1-font-family: 'Pangolin';
+		--mdc-typography-headline5-font-family: 'Pangolin';
+		--mdc-typography-font-family: 'Pangolin';
+		--mdc-typography-body1-font-size: 1rem;
+		--mdc-shape-medium: 2rem;
 		}
-	</style>
+		</style>
 
 	<body data-sveltekit-preload-data="tap">
-		<div style="display: contents">%sveltekit.body%</div>
+		<div class="container" style="display: contents">
+			%sveltekit.body%
+		</div>
 	</body>
 </html>
