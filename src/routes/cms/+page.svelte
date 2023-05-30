@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 
 	let component: any;
+	let color: string;
 
 	// for update preferences.layout = selected;
 	const options = [
@@ -20,29 +21,32 @@
 	});
 
 	$: if (userPreferences) {
-		
 	}
 
 	let select = async () => {
-		switch (selected) {
+		switch (selected.layout) {
 			case 'mega':
 				console.log('template mega.');
-				component = (await import('../../components/layout/alpha/Layout.svelte')).default;
+				component = (await import('../../components/layout/mega/Layout.svelte')).default;
+				color = '#911c1c';
 				break;
 			case 'alpha':
 				console.log('template alpha.');
 				component = (await import('../../components/layout/alpha/Layout.svelte')).default;
+				color = '#1b971b';
 				break;
 			case 'gamma':
 				console.log('template gamma.');
-				component = (await import('../../components/layout/alpha/Layout.svelte')).default;
+				component = (await import('../../components/layout/gamma/Layout.svelte')).default;
+				color = '#339299';
 				break;
 			default:
 				console.log('template default.');
-				component = (await import('../../components/layout/alpha/Layout.svelte')).default;
+				component = (await import('../../components/layout/Layout.svelte')).default;
+				color = '#336699';
 		}
 
-		userPreferences.set({ layout: { name: 'mega', component } });
+		userPreferences.set({ layout: { name: selected.layout, component, bgColor: color } });
 	};
 </script>
 

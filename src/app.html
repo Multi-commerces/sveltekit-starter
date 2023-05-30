@@ -5,34 +5,36 @@
 		<meta name="description" content="" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-
+		<title>Julien ILARI, développeur web fullStack JAVA indépendant</title>
 		<!-- Material Icons -->
-		<link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></noscript>
+		<link
+			rel="preload"
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			as="style"
+			onload="this.onload=null;this.rel='stylesheet'"
+		/>
+		<noscript>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+		</noscript>
 
 		%sveltekit.head%
-	</head>
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-		@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
-		@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
-		/* Layout grid spacing. */
-		:root {
-		/* --mdc-layout-grid-margin-desktop: calc(112px + 1rem) 1rem;
-		--mdc-layout-grid-margin-phone: 112px 0;
-		--mdc-layout-grid-margin-tablet: 112px 0; */
-		--mdc-typography-body1-font-family: 'Pangolin';
-		--mdc-typography-headline5-font-family: 'Pangolin';
-		--mdc-typography-font-family: 'Pangolin';
-		--mdc-typography-body1-font-size: 1rem;
-		--mdc-shape-medium: 2rem;
-		}
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+			@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+			@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			
 		</style>
+	</head>
 
 	<body data-sveltekit-preload-data="tap">
-		<div class="container" style="display: contents">
-			%sveltekit.body%
-		</div>
+		<div class="container" style="min-height: 100vh; display: flex; flex-direction: column;">%sveltekit.body%</div>
 	</body>
 </html>

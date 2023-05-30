@@ -1,279 +1,149 @@
 <script>
-	import { MDCIconButtonToggleFoundation } from '@material/icon-button';
-	import Flex from 'svelte-flex';
-	import CellPaper from '../components/Article.svelte';
 	import { onMount } from 'svelte';
-	import Layout from './+layout.svelte';
-	import { fade } from 'svelte/transition';
+	import SocialCardHover from '../components/SocialCardHover.svelte';
+	import { faGithub, faLinkedin, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+	import { faPerson, faUser, faUserAlt, faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 
-	// export let topBar;
+	let canvas;
+	const imagePaths = [
+		'/logo/browser-chrome-icon.svg',
+		'/logo/browser-edge-icon.svg',
+		'/logo/browser-firefox-icon.svg',
+		'/logo/coding-icon.svg',
+		'/logo/crime-hacker-icon.svg',
+		'/logo/css3-alt-icon-original.svg',
+		'/logo/docker-icon-icon-original.svg',
+		'/logo/file-type-svelte-icon-original.svg',
+		'/logo/file-type-vscode-icon-original.svg',
+		'/logo/html5-icon-icon-original.svg',
+		'/logo/java-icon-original.svg',
+		'/logo/javascript-icon-original.svg',
+		'/logo/programmer-computer-icon.svg',
+		'/logo/rest-api-icon.svg',
+		'/logo/spring-icon-icon-original.svg'
+	];
+	const numBalls = imagePaths.length;
+	const balls = [];
 
-	let btnToggle;
-	let scrollTarget;
-
-	let imgAce;
-
-	let loaded = false;
-	let src = '/ice.png';
-	function loadImage() {
-		const image = new Image();
-		image.src = src;
-		image.onload = () => {
-			loaded = true;
-		};
+	function onResize() {
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
 	}
 
-	onMount(async () => {
-		try {
-			await loadImage();
-			loaded = true;
-		} catch (error) {
-			console.error('Failed to load image:', error);
+	onMount(() => {
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+
+		const ctx = canvas.getContext('2d');
+
+		// Charger les images SVG
+		function loadImages() {
+			let imagesLoaded = 0;
+
+			// Fonction de rappel appelée lorsque chaque image est chargée
+			function imageLoaded() {
+				imagesLoaded++;
+
+				if (imagesLoaded === numBalls) {
+					// Toutes les images sont chargées, vous pouvez démarrer l'animation
+					animateBalls();
+				}
+			}
+
+			// Charger chaque image SVG
+			imagePaths.forEach((path, index) => {
+				const img = new Image();
+				img.onload = imageLoaded;
+				img.src = path;
+				balls[index].image = img;
+			});
 		}
+
+		// Création des boules
+		for (let i = 0; i < numBalls; i++) {
+			const ball = {
+				x: Math.random() * canvas.width,
+				y: Math.random() * canvas.height,
+				radius: 25,
+				xSpeed: (Math.random() - 0.5) * 4,
+				ySpeed: (Math.random() - 0.5) * 4,
+				image: null // L'image sera attribuée lors du chargement
+			};
+
+			balls.push(ball);
+		}
+
+		// Animation des boules
+		function animateBalls() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+			balls.forEach((ball) => {
+				// Mise à jour de la position
+				ball.x += ball.xSpeed;
+				ball.y += ball.ySpeed;
+
+				// Détection des collisions avec les bords
+				if (ball.x - ball.radius <= 0 || ball.x + ball.radius >= canvas.width) {
+					ball.xSpeed = -ball.xSpeed;
+				}
+
+				if (ball.y - ball.radius <= 0 || ball.y + ball.radius >= canvas.height) {
+					ball.ySpeed = -ball.ySpeed;
+				}
+
+				// Dessin de la boule avec l'image
+				ctx.drawImage(
+					ball.image,
+					ball.x - ball.radius,
+					ball.y - ball.radius,
+					ball.radius * 2,
+					ball.radius * 2
+				);
+			});
+
+			requestAnimationFrame(animateBalls);
+		}
+
+		// Démarrage du chargement des images SVG
+		loadImages();
 	});
 </script>
 
-<div class="bb">
-	<div style="position: relative;z-index:2;margin:auto;display: inline-block;width:100%">
-		<h1>
-			Je suis <br />
-			Julien ILARI <br />
-			Dév. Full-Stack / Java
-		</h1>
-	</div>
-</div>
-<div class="java" style="position:absolute;top:15vw;left:62vw">
-	<img src="/java.png" alt="java" width="200px" />
-</div>
+<!-- Reste du contenu du composant Svelte -->
+<canvas bind:this={canvas} id="canvas" width="800" height="600" style="position:absolute" />
 
-<!-- 
-<div class="ice" style="position:absolute;bottom: 0px;right:0;z-index:1">
-	{#if loaded}
-		<img
-			src="/ice.png"
-			class="progressive-img"
-			aria-hidden="true"
-			alt="ice"
-			width="700px"
-			transition:fade={{ duration: 2000 }}
-		/>
-	{/if}
-</div> -->
+<article>
+	<header><h1>Bienvenue sur mon <strong>site web</strong></h1></header>
+	<div id="social-card">
+		<SocialCardHover icon={faLinkedin} title="LinkedIn" />
+		<SocialCardHover icon={faUserAstronaut} title="Moi" />
+		<SocialCardHover icon={faGithub} title="GitHub" />
+	</div>
+	<slot />
+</article>
 
 <style global>
-	#scrollTarget {
-		display: none;
-		position: absolute;
-		/* margin-top: 100vh; */
-		transition: margin-top 0.5s ease;
-		background-color: #201c1c;
+	#social-card {
+		display: flex;
+		justify-content: space-around;
 	}
-	#btnToggle {
-		position: relative;
+	#canvas {
+		/* border-radius: 50%; */
 		display: block;
-		z-index: 2;
-		float: right;
-	}
-	.bb::before,
-	.bb::after,
-	.bb {
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-	}
 
-	.bb {
-		width: 40vw;
-		height: 40vh;
 		margin: auto;
-		color: #69ca62;
-		box-shadow: inset 0 0 0 3px rgba(105, 202, 98, 0.5);
-	}
-
-	.bb:hover {
-		cursor: not-allowed;
-	}
-
-	.bb::before,
-	.bb::after {
-		content: '';
-		/* z-index: 1; */
-		margin: -10vh -20vw;
-		box-shadow: inset 0 0 0 3px;
-		animation-name: clipMe;
-		animation-duration: 8s; /* Durée de l'animation en secondes */
-		animation-timing-function: linear; /* Fonction de temporisation de l'animation */
-		animation-iteration-count: 1; /* Répétition infinie de l'animation */
-		transform-origin: center;
-	}
-
-	.bb:hover::before {
-		animation-delay: -1s;
-	}
-
-	.bb:hover::after {
-		animation-direction: normal; /* Ajout de la direction inverse */
-	}
-
-	.bb::after {
-		background-color: rgba(163, 62, 62, 0.329);
-	}
-
-	@keyframes clipMe {
-		0% {
-			clip-path: circle(0%);
-		}
-		25% {
-			clip-path: circle(25%);
-		}
-		50% {
-			clip-path: circle(50%);
-		}
-		75% {
-			clip-path: circle(75%);
-		}
-		100% {
-			clip-path: circle(100%);
-		}
-	}
-
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-	}
-
-	.bb div {
-		padding: 2rem;
-		position: relative;
-		top: 0;
-		font-weight: 900;
-		font-size: xx-large;
-		visibility: visible;
-		color: #201c1c;
-		text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px rgb(156, 20, 20),
-			0 0 82px #0fa, 0 0 92px rgb(156, 20, 20), 0 0 102px rgb(156, 20, 20),
-			0 0 151px rgb(156, 20, 20);
-		opacity: 1;
-	}
-
-	.button {
-		position: relative;
-		padding: 16px 30px;
-		font-size: 1.5rem;
-		color: var(--color);
-		border: 2px solid rgba(0, 0, 0, 0.5);
-		border-radius: 4px;
-		text-shadow: 0 0 15px var(--color);
-		text-decoration: none;
-		text-transform: uppercase;
-		letter-spacing: 0.1rem;
-		transition: 0.5s;
-		z-index: 1;
-	}
-
-	.button:hover {
-		color: #fff;
-		border: 2px solid rgba(0, 0, 0, 0);
-		box-shadow: 0 0 0px var(--color);
-	}
-
-	.button::before {
-		content: '';
-		position: absolute;
-		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
-		background: var(--color);
-		z-index: -1;
-		transform: scale(0);
-		transition: 0.5s;
+		top: 0;
+		max-width: 100%;
 	}
 
-	.button:hover::before {
-		transform: scale(1);
-		transition-delay: 0.5s;
-		box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
-	}
-
-	.button span {
+	.ball {
+		height: 50px;
+		width: 50px;
+		display: block;
 		position: absolute;
-		background: var(--color);
-		pointer-events: none;
-		border-radius: 2px;
-		box-shadow: 0 0 10px var(--color), 0 0 20px var(--color), 0 0 30px var(--color),
-			0 0 50px var(--color), 0 0 100px var(--color);
-		transition: 0.5s ease-in-out;
-		transition-delay: 0.25s;
-	}
-
-	.button:hover span {
-		opacity: 0;
-		transition-delay: 0s;
-	}
-
-	.button span:nth-child(1),
-	.button span:nth-child(3) {
-		width: 40px;
-		height: 4px;
-	}
-
-	.button:hover span:nth-child(1),
-	.button:hover span:nth-child(3) {
-		transform: translateX(0);
-	}
-
-	.button span:nth-child(2),
-	.button span:nth-child(4) {
-		width: 4px;
-		height: 40px;
-	}
-
-	.button:hover span:nth-child(1),
-	.button:hover span:nth-child(3) {
-		transform: translateY(0);
-	}
-
-	.button span:nth-child(1) {
-		top: calc(50% - 2px);
-		left: -50px;
-		transform-origin: left;
-	}
-
-	.button:hover span:nth-child(1) {
-		left: 50%;
-	}
-
-	.button span:nth-child(3) {
-		top: calc(50% - 2px);
-		right: -50px;
-		transform-origin: right;
-	}
-
-	.button:hover span:nth-child(3) {
-		right: 50%;
-	}
-
-	.button span:nth-child(2) {
-		left: calc(50% - 2px);
-		top: -50px;
-		transform-origin: top;
-	}
-
-	.button:hover span:nth-child(2) {
-		top: 50%;
-	}
-
-	.button span:nth-child(4) {
-		left: calc(50% - 2px);
-		bottom: -50px;
-		transform-origin: bottom;
-	}
-
-	.button:hover span:nth-child(4) {
-		bottom: 50%;
+		z-index: 2;
+		background-color: brown;
+		border-radius: 50%;
 	}
 </style>

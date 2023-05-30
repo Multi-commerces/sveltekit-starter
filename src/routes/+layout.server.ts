@@ -14,11 +14,6 @@ export const load = (async ({ url }) => {
 			url: '/cv'
 		},
 		{
-			icon: 'question_answer',
-			label: 'Faq',
-			url: '/faq'
-		},
-		{
 			icon: 'contact_support',
 			label: 'Contact',
 			url: '/contact'
