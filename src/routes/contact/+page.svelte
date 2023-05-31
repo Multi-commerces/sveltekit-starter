@@ -21,10 +21,8 @@
 	let email = 'julien.ilari@gmail.com';
 	let subject = 'premier contact';
 	let message = 'Bonjour, est-il possible de me contacter (préférence mardi 10h00)';
-
-	onMount(async () => {
-		
-	});
+  
+	onMount(async () => {});
 </script>
 
 <Article title="Me contacter" span={12}>
@@ -40,7 +38,7 @@
 			</p>
 		</div>
 	</Cell>
-	<Cell spanDevices={{ desktop: 4, tablet: 12, phone: 12 }}>
+	<Cell spanDevices={{ desktop: 12, tablet: 12, phone: 12 }}>
 		{#if form?.success}
 			<p>Nous avons bien reçu votre message, merci !</p>
 			<p>{form?.message} ou {data?.message} email : {form?.email}</p>
@@ -49,7 +47,8 @@
 		{#if form?.incorrect}<p class="error">Invalid credentials!</p>{/if}
 		<form method="POST" action="?/send">
 			<Textfield
-				class="shaped-outlined full-width"
+				style="width: 100%"
+				class="shaped-outlined"
 				variant="outlined"
 				bind:value={email}
 				label="email"
@@ -59,7 +58,8 @@
 				<HelperText slot="helper">Votre mail</HelperText>
 			</Textfield>
 			<Textfield
-				class="shaped-outlined full-width"
+				style="width: 100%"
+				class="shaped-outlined"
 				variant="outlined"
 				bind:value={tel}
 				label="téléphone"
@@ -68,7 +68,8 @@
 				<HelperText slot="helper">Votre numéro de téléphone</HelperText>
 			</Textfield>
 			<Textfield
-				class="shaped-outlined full-width"
+				style="width: 100%"
+				class="shaped-outlined"
 				variant="outlined"
 				bind:value={subject}
 				label="subject"
@@ -78,11 +79,13 @@
 				<HelperText slot="helper">Objet du message</HelperText>
 			</Textfield>
 			<Textfield
-				class="shaped-outlined full-width"
+				style="width: 100%"
+				class="shaped-outlined"
 				variant="outlined"
 				textarea
 				input$maxlength={200}
-				input$rows={6}
+				input$rows={4}
+				helperLine$style="width: 100%;"
 				bind:value={message}
 				label="message"
 				required
@@ -100,7 +103,7 @@
 			</div>
 		</form>
 	</Cell>
-	<Cell spanDevices={{ desktop: 8, tablet: 12, phone: 12 }}>
+	<Cell spanDevices={{ desktop: 12, tablet: 12, phone: 12 }}>
 		<div>
 			<p>
 				Cette page est spécialement conçue pour vous permettre de rester en contact avec moi et
@@ -117,12 +120,10 @@
 			</div>
 		</div>
 	</Cell>
-	<Cell>
-		<img src="/contact_QR_code.png" alt="QR Code" />
-	</Cell>
 </Article>
 
 <style>
-	@media screen and (min-width: 801px) {
+	:global(label) {
+		margin-top: 1rem;
 	}
 </style>

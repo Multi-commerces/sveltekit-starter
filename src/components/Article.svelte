@@ -12,7 +12,7 @@
 	<Paper>
 		<Title {tag}>
 			{#if faIcon}
-				<Fa icon={faIcon} color="#ff2f00" style="margin-right:1rem;display:inline-block" />
+				<Fa icon={faIcon} color="#ff2f00" style="display:inline-block" />
 			{/if}
 			<span>{title}</span>
 		</Title>
@@ -24,6 +24,3 @@
 		</Content>
 	</Paper>
 </article>
-
-<style>
-</style>

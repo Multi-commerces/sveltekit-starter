@@ -15,43 +15,63 @@
 	box-sizing: inherit;
 }
 
-html,
-body {
-	position: relative;
-	top: 0;
-	left: 0;
-	min-height: 100%;
+html {
+	height: 100%;
+}
+
+body::before {
+	content: '';
+	position: fixed;
 	height: 100%;
 	width: 100%;
+	
+	z-index: -1; /* Keep the background behind the content */
+	background: url(/bg2.png) no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position-y: 48px;
 }
 
 body {
-	background: url(/bg2.png) no-repeat;
-	-webkit-background-size: 100vw 100vh;
-	-moz-background-size: 100vw 100vh;
-	-o-background-size: 100vw 100vh;
-	background-size: 100vw 100vh;
-	background-position-y: 112px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 header {
-	position: sticky;
-	top: 0;
-
-	nav {
-		background-color: white !important;
-		max-height: 48px;
-	}
+	position: fixed;
+	width: 100vw;
+	top: 0 !important;
+	left: 0;
 }
 
 main {
 	position: relative;
 	overflow-y: auto;
-	height: 100%;
-	opacity: 92%;
+	opacity: 90%;
+	overflow-y: inherit;
+
+	#main-container {
+		width: 100%;
+	}
 	article {
 		margin: auto;
 	}
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 /* Mobile */
@@ -62,19 +82,22 @@ main {
 	}
 }
 
-/* Tablettes */
-@media (min-width: 768px) and (max-width: 1023px) {
+/* Tablettes / Petit ordinateur */
+@media (min-width: 768px) and (max-width: 991px) {
 	/* Vos styles CSS pour les tablettes ici */
+	
 }
 
-/* Mobile ou tablette */
-@media (max-width: 1023px) {
+/* Mobile / Tablettes / petit ordinateur  */
+@media (max-width: 991px) {
 	/* Vos styles CSS pour les appareils mobiles ou tablettes ici */
 	:root {
 		--mdc-shape-medium: initial !important;
 	}
 	main {
-		padding: 112px 0;
+		#main-container {
+			margin-top: 0;
+		}
 		article {
 			width: 100%;
 		}
@@ -82,43 +105,35 @@ main {
 }
 
 /* Ordinateurs de bureau ou Grand écran */
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
 	/* Vos styles CSS pour les ordinateurs de bureau ou grands écrans ici */
 	main {
-		padding: calc(112px + 1rem) 1rem;
+		#main-container {
+			margin-top: 1rem;
+		}
+
+		// padding: calc(96px + 1rem) 1rem !important;
 		article {
-			width: 100%;
+			width: 90%;
 		}
 	}
 }
 
 /* Ordinateurs de bureau */
-@media (min-width: 1024px) and (max-width: 1199px) {
+@media (min-width: 992px) and (max-width: 1199px) {
 	/* Vos styles CSS pour les ordinateurs de bureau ici */
-	main {
-		article {
-			width: 80%;
-		}
-	}
+	
 }
 
 /* Grand écran / haute résolution */
 @media (min-width: 1200px) {
 	/* Vos styles CSS pour les grands écrans ou les écrans haute résolution ici */
-	main {
-		article {
-			width: 70%;
-		}
-	}
+	
 }
 
 /*
 * CSS utilitaire
 */
-.full-width {
-	width: 100% !important;
-}
-
 .line {
 	display: block;
 	width: 45px;

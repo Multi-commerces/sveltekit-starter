@@ -92,7 +92,7 @@
 		width: 100%;
 		display: flex;
 		align-items: center;
-		height: 60pt;
+		height: 30pt;
 		/* background-color: #f2f2f2; */
 	}
 
@@ -102,7 +102,7 @@
 		width: 100%;
 		display: inline-block;
 		/* font-family: 'Raleway', sans-serif important; */
-		font-size: 40pt;
+		font-size: 20pt;
 		user-select: none;
 		/* color: black; */
 	}
