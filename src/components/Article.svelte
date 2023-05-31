@@ -24,6 +24,3 @@
 		</Content>
 	</Paper>
 </article>
-
-<style>
-</style>

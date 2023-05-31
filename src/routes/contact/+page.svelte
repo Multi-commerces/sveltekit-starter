@@ -21,7 +21,7 @@
 	let email = 'julien.ilari@gmail.com';
 	let subject = 'premier contact';
 	let message = 'Bonjour, est-il possible de me contacter (préférence mardi 10h00)';
-
+  
 	onMount(async () => {});
 </script>
 
@@ -126,6 +126,4 @@
 	:global(label) {
 		margin-top: 1rem;
 	}
-
-
 </style>
