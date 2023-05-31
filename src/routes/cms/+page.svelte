@@ -69,6 +69,6 @@
 				<option value={option}>{option.layout}</option>
 			{/each}
 		</select>
-		<a href="/test" title="page de test">Tester le layout ici</a>
+		<a href="/contact/mod" title="page de test">Tester le layout ici</a>
 	</Cell>
 </Article>

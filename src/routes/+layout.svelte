@@ -3,7 +3,7 @@
 	import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 	import { onMount } from 'svelte';
 	import Fa from 'svelte-fa';
-	import ExternalLink from '../components/ ExternalLink.svelte';
+	import ExternalLink from '../components/ExternalLink.svelte';
 
 	export let data: any;
 

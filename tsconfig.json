@@ -14,7 +14,13 @@
 		/**
 		  These are the settings I like.
 			*/
-		"noImplicitAny": true
+		"noImplicitAny": true,
+		"paths": {
+			"@components": ["./src/components"],
+			"@/*": ["./src/*"],
+			"$lib": ["./src/lib"],
+			"$lib/*": ["./src/lib/*"]
+		}
 	}
 	// "include": ["src/**/*"],
 	// "exclude": ["node_modules", "build/**/*"]
