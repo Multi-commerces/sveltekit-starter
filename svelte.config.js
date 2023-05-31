@@ -10,12 +10,6 @@ const config = {
 	// https://kit.svelte.dev/docs/configuration
 	kit: {
 		adapter: adapter()
-		// default options are shown
-		//out: 'build',
-		//precompress: false,
-		//envPrefix: ''
-
-		// plugins: []
 	},
 	// https://kit.svelte.dev/docs/configuration#csrf
 	csrf: false,

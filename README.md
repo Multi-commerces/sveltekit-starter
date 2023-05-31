@@ -38,11 +38,8 @@ my-project/
 ├ tsconfig.json
 └ vite.config.js
 ```
+![image](https://github.com/Multi-commerces/sveltekit-starter/assets/55719162/c29b3696-6c57-44e1-9bb3-3cd710f75228)
 
-# Material Icons
 
-https://materialdesignicons.com/
 
-# Mode mobile
 
-![image](https://github.com/Multi-commerces/sveltekit-starter/assets/55719162/d07137c8-3159-40c4-a670-dcecec696cc8)
