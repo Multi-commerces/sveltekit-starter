@@ -28,11 +28,11 @@ function superLog(event) {
 }
 
 async function getUserByIdFromToken(token) {
-	console.log('calling getUserByIdFromToken');
+	console.info('calling getUserByIdFromToken');
 	try {
 		const decodedToken = await verifyJwt(token);
 		if (!decodedToken) {
-			console.log(' |-> token invalided');
+			console.warn(' |-> token invalided');
 			return null;
 		}
 
@@ -47,8 +47,8 @@ async function getUserByIdFromToken(token) {
 			}
 		});
 
-		console.log(' |-> decodedToken ' + decodedToken);
-		console.log(' |-> user.id (bdd) ' + user?.id);
+		console.debug(' |-> decodedToken ' + decodedToken);
+		console.debug(' |-> user.id (bdd) ' + user?.id);
 
 		return user;
 	} catch (error) {
@@ -65,8 +65,6 @@ export async function handle({ event, resolve }) {
 
 	const authCookie = event.cookies.get('AuthorizationToken');
 	if (authCookie) {
-		console.log(' |-> authCookie ' + authCookie);
-
 		const token = authCookie.split(' ')[1];
 		const user = await getUserByIdFromToken(token);
 		if (user) {

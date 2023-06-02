@@ -13,8 +13,8 @@ const encoder = new TextEncoder();
 
 // Async function to verify JWT
 const verifyJwt = async (jwt) => {
+	console.info('calling verifyJwt');
 	try {
-		console.log(jwt);
 		const secret = encoder.encode(secretKey);
 		const { payload, protectedHeader } = await jwtVerify(jwt, secret, { issuer, audience });
 		return { protectedHeader, payload };
