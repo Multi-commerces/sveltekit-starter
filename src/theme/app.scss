@@ -24,7 +24,7 @@ body::before {
 	position: fixed;
 	height: 100%;
 	width: 100%;
-	
+
 	z-index: -1; /* Keep the background behind the content */
 	background: url(/bg2.png) no-repeat;
 	background-attachment: fixed;
@@ -85,7 +85,6 @@ footer {
 /* Tablettes / Petit ordinateur */
 @media (min-width: 768px) and (max-width: 991px) {
 	/* Vos styles CSS pour les tablettes ici */
-	
 }
 
 /* Mobile / Tablettes / petit ordinateur  */
@@ -122,13 +121,11 @@ footer {
 /* Ordinateurs de bureau */
 @media (min-width: 992px) and (max-width: 1199px) {
 	/* Vos styles CSS pour les ordinateurs de bureau ici */
-	
 }
 
 /* Grand écran / haute résolution */
 @media (min-width: 1200px) {
 	/* Vos styles CSS pour les grands écrans ou les écrans haute résolution ici */
-	
 }
 
 /*

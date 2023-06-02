@@ -22,8 +22,8 @@
 
 <style>
 	a {
-		transition: all .2s ease-in-out;
-        display: inline-block;
+		transition: all 0.2s ease-in-out;
+		display: inline-block;
 	}
 	a:hover {
 		-ms-transform: scale(1.2); /* IE 9 */

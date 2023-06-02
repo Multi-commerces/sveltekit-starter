@@ -11,7 +11,9 @@ const config = {
 	// https://kit.svelte.dev/docs/configuration
 	kit: {
 		adapter: adapter(),
-
+		csrf: {
+			checkOrigin: false
+		},
 		alias: {
 			$modules: path.resolve('./src/modules')
 		}

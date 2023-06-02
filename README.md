@@ -13,6 +13,20 @@ Un exemple de projet implémentant [Svelte Material UI](https://github.com/hperr
 
 https://cweili.github.io/svelte-fa/
 
+# initialisation BBD avec prisma
+
+Installation du CLI : npm install prisma --save-dev
+Initialisation : prisma init --datasource-provider sqlite
+
+prisma migrate dev --name init
+ou
+prisma generate ./prisma/schema.prisma
+
+✔ Installed the @prisma/client and prisma packages in your project
+
+✔ Generated Prisma Client (4.15.0 | library) to ./node_modules/@prisma/client in 291ms
+You can now start using Prisma Client in your code. Reference: https://pris.ly/d/client
+
 # Un projet SvelteKit typique ressemble à ceci :
 
 ```
@@ -38,8 +52,5 @@ my-project/
 ├ tsconfig.json
 └ vite.config.js
 ```
+
 ![image](https://github.com/Multi-commerces/sveltekit-starter/assets/55719162/c29b3696-6c57-44e1-9bb3-3cd710f75228)
-
-
-
-

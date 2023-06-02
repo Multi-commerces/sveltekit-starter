@@ -1,5 +1,5 @@
 <script>
-  // Composant du module B
+	// Composant du module B
 </script>
 
 <h1>Module B</h1>

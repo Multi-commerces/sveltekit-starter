@@ -107,6 +107,9 @@
 		// Démarrage du chargement des images SVG
 		loadImages();
 	});
+
+	/** @type {import('./$types').LayoutData} */
+	export let data;
 </script>
 
 <!-- Reste du contenu du composant Svelte -->
@@ -119,7 +122,19 @@
 		<SocialCardHover icon={faUserAstronaut} title="Moi" />
 		<SocialCardHover icon={faGithub} title="GitHub" />
 	</div>
-	<slot />
+	<div style="z-index:11;position: absolute;">
+		{JSON.stringify(data)}
+
+		{#if data?.user}
+			<h1>Logged in as user: {data?.user?.email}</h1>
+			<form method="POST" action="?/logout">
+				<button type="submit">Log Out</button>
+			</form>
+		{:else}
+			<a href="auth/login">Login</a>
+			<a href="auth/register">Register</a>
+		{/if}
+	</div>
 </article>
 
 <style global>
