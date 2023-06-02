@@ -13,10 +13,15 @@ const secretKey = process.env.SECRET_KEY;
 const algorithm = 'HS256';
 
 // Defining the custom claims to be used in the JWT
-const customIssuer = process.env.JWT_ISSUER;
-const customAudience = process.env.JWT_AUDIANCE;
+const customIssuer = process.env.JWT_ISSUER ?? 'JWT_ISSUER_DEFAULT';
+const customAudience = process.env.JWT_AUDIANCE ?? 'JWT_AUDIANCE_DEFAULT';
 
-// Defining a function which generates tokens with options specified
+/**
+ * Defining a function which generates tokens with options specified
+ * @param {*} user
+ * @returns
+ */
+// @ts-ignore
 const generateAccessToken = async (user) => {
 	console.log('generateAccessToken ' + JSON.stringify(user));
 	try {

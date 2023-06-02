@@ -1,9 +1,14 @@
 <script>
 	import { onMount } from 'svelte';
 	import SocialCardHover from '../components/SocialCardHover.svelte';
-	import { faGithub, faLinkedin, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-	import { faPerson, faUser, faUserAlt, faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
+	// @ts-ignore
+	import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+	// @ts-ignore
+	import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 
+	/**
+	 * @type {HTMLCanvasElement}
+	 */
 	let canvas;
 	const imagePaths = [
 		'/logo/browser-chrome-icon.svg',
@@ -23,8 +28,10 @@
 		'/logo/spring-icon-icon-original.svg'
 	];
 	const numBalls = imagePaths.length;
+	// @ts-ignore
 	const balls = [];
 
+	// @ts-ignore
 	function onResize() {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
@@ -55,6 +62,7 @@
 				const img = new Image();
 				img.onload = imageLoaded;
 				img.src = path;
+				// @ts-ignore
 				balls[index].image = img;
 			});
 		}
@@ -75,8 +83,10 @@
 
 		// Animation des boules
 		function animateBalls() {
+			// @ts-ignore
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+			// @ts-ignore
 			balls.forEach((ball) => {
 				// Mise à jour de la position
 				ball.x += ball.xSpeed;
@@ -92,6 +102,7 @@
 				}
 
 				// Dessin de la boule avec l'image
+				// @ts-ignore
 				ctx.drawImage(
 					ball.image,
 					ball.x - ball.radius,
@@ -107,9 +118,6 @@
 		// Démarrage du chargement des images SVG
 		loadImages();
 	});
-
-	/** @type {import('./$types').LayoutData} */
-	export let data;
 </script>
 
 <!-- Reste du contenu du composant Svelte -->
@@ -122,22 +130,16 @@
 		<SocialCardHover icon={faUserAstronaut} title="Moi" />
 		<SocialCardHover icon={faGithub} title="GitHub" />
 	</div>
-	<div style="z-index:11;position: absolute;">
-		{JSON.stringify(data)}
-
-		{#if data?.user}
-			<h1>Logged in as user: {data?.user?.email}</h1>
-			<form method="POST" action="?/logout">
-				<button type="submit">Log Out</button>
-			</form>
-		{:else}
-			<a href="auth/login">Login</a>
-			<a href="auth/register">Register</a>
-		{/if}
-	</div>
 </article>
 
 <style global>
+	@media (max-width: 1250px) {
+		#social-card  {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	}
 	#social-card {
 		display: flex;
 		justify-content: space-around;

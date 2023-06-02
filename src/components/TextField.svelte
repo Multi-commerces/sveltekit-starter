@@ -1,9 +1,11 @@
 <script>
+	// @ts-nocheck
 	import { onMount } from 'svelte';
 	import Fa from 'svelte-fa';
+	import { writable } from 'svelte/store';
 
-	export let name;
-	export let label;
+	export let name = '';
+	export let label = '';
 	export let value = writable('');
 
 	export let placeholder;

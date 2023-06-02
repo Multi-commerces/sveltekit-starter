@@ -1,6 +1,6 @@
 <script>
-	import LayoutGrid, { Cell } from '@smui/layout-grid';
-	import Paper, { Content, Title } from '@smui/paper';
+
+	// @ts-ignore
 	import Flex from 'svelte-flex';
 </script>
 

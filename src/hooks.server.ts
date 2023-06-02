@@ -4,14 +4,20 @@ import verifyJwt from './lib/server/validate-jwt';
 const unProtectedRoutes = ['/', '/login', '/auth/sign_in', '/auth/sign_up'];
 
 // custom redirect from joy of code `https://github.com/JoysOfCode/sveltekit-auth-cookies/blob/migration/src/hooks.ts`
-function redirect(location, body) {
+/**
+ *
+ * @param location
+ * @param body
+ * @returns
+ */
+function redirect(location: string, body: any) {
 	return new Response(body, {
 		status: 303,
 		headers: { location }
 	});
 }
 
-function superLog(event) {
+function superLog(event: any) {
 	let route = event.route;
 	let start = performance.now();
 	let end = performance.now();
@@ -27,7 +33,12 @@ function superLog(event) {
 	}
 }
 
-async function getUserByIdFromToken(token) {
+/**
+ *
+ * @param token
+ * @returns
+ */
+async function getUserByIdFromToken(token: any): Promise<any> {
 	console.info('calling getUserByIdFromToken');
 	try {
 		const decodedToken = await verifyJwt(token);
@@ -36,7 +47,7 @@ async function getUserByIdFromToken(token) {
 			return null;
 		}
 
-		const userId = decodedToken.payload.id;
+		const userId: any = decodedToken.payload.id ?? 0;
 		const user = await db.user.findUnique({
 			where: {
 				id: userId
@@ -61,6 +72,7 @@ export async function handle({ event, resolve }) {
 	superLog(event);
 
 	// pass to `event.locals` as before
+	//@ts-ignore
 	event.locals.locale = 'fr';
 
 	const authCookie = event.cookies.get('AuthorizationToken');
@@ -68,12 +80,14 @@ export async function handle({ event, resolve }) {
 		const token = authCookie.split(' ')[1];
 		const user = await getUserByIdFromToken(token);
 		if (user) {
+			//@ts-ignore
 			event.locals.user = user;
 		}
 	}
 
 	// Replace the `lang` attribute
 	return await resolve(event, {
+		//@ts-ignore
 		transformPageChunk: ({ html }) => html.replace('%lang%', event.locals.locale)
 	});
 }
@@ -91,8 +105,10 @@ export function handleError({ error, event }) {
 	// example integration with https://sentry.io/
 	Sentry.captureException(error, { extra: { event } });
 
+	//@ts-ignore
 	return {
 		message: 'Whoops!',
+		//@ts-ignore
 		code: error?.code ?? 'UNKNOWN'
 	};
 }

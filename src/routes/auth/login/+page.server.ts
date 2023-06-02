@@ -11,7 +11,7 @@ export const actions = {
 
 		// Signed in
 		// console.log(JSON.stringify(await searchUsers()));
-
+		//@ts-ignore
 		const { error, token } = await loginUser(email, password);
 		if (error) {
 			console.warn(' |=> Email : ' + email);

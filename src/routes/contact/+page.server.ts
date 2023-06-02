@@ -19,13 +19,16 @@ export const actions = {
 
 			let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 			apiInstance.setApiKey(
+				//@ts-ignore
 				SibApiV3Sdk.ContactsApiApiKeys.apiKey,
 				'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'
 			);
 
 			let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+			//@ts-ignore
 			sendSmtpEmail.subject = subject;
 			sendSmtpEmail.sender = {
+				//@ts-ignore
 				email: email,
 				name: 'Julien ILARI'
 			};
@@ -35,6 +38,7 @@ export const actions = {
 					name: 'Julien ILARI'
 				}
 			];
+			//@ts-ignore
 			sendSmtpEmail.message = message;
 			sendSmtpEmail.htmlContent = `<html><head></head><body><p>${message}</p></body></html>`;
 
@@ -58,7 +62,11 @@ export const actions = {
 			const message = `###################### Error in /login form: ${err}`;
 			console.error(message);
 			// return error(500, message);
-			return { success: true, message, email };
+			return {
+				success: true,
+				message, //@ts-ignore
+				email
+			};
 		}
 	}
 };

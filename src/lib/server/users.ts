@@ -1,13 +1,18 @@
-// ts-node script.ts
 import { PrismaClient } from '@prisma/client';
 import generateToken from '$lib/server/generate-jwt';
-import verifyJwt from '$lib/server/validate-jwt';
+import verifyJwt from './validate-jwt';
 import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 const saltRounds = 12;
 
-export async function createUserWithEmailAndPassword(email, password) {
+/**
+ * Demande de création d'un nouveau utilisateur avec email et password
+ * @param {*} email The email
+ * @param {*} password The password
+ * @returns
+ */
+export async function createUserWithEmailAndPassword(email: string, password: string) {
 	try {
 		const has = await bcrypt.hash(password, saltRounds);
 		console.log('has : ' + has);
@@ -27,24 +32,26 @@ export async function createUserWithEmailAndPassword(email, password) {
 	}
 }
 
-export async function loginUser(email, password) {
+/**
+ * Login de utilisateur avec la pair email apssword
+ * @param {*} email
+ * @param {*} password
+ * @returns token
+ */
+export async function loginUser(email: string, password: string) {
 	console.log('Login for user email :' + email);
 	try {
-		const user = await prisma.user.findUnique({
+		// user @type {object}
+		const user: any = await prisma.user.findUnique({
 			where: {
 				email
 			}
 		});
 
-		if (!user) {
-			console.log(' |=> User not found (BDD)');
-			return { error: 'User not found' };
-		}
 		console.log('User : ' + JSON.stringify(user));
-
-		const isEquals = await bcrypt.compare(password, user.password);
+		const isEquals = user ? await bcrypt.compare(password, user.password) : false;
 		if (!isEquals) {
-			return { error: 'Invalid password' };
+			return { error: 'login user fail' };
 		}
 
 		const token = await generateToken(user);
@@ -60,7 +67,7 @@ export async function searchUsers() {
 	return await prisma.user.findMany();
 }
 
-export async function findUserByEmail(email) {
+export async function findUserByEmail(email: string) {
 	return await prisma.user.findUnique({
 		where: {
 			email

@@ -1,6 +1,5 @@
 <script lang="ts">
-	import LayoutGrid, { Cell } from '@smui/layout-grid';
-	import Paper, { Content, Title } from '@smui/paper';
+
 </script>
 
 <div>

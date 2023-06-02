@@ -4,7 +4,7 @@
 		"ignoreDeprecations": "5.0",
 		"noImplicitReturns": true,
 		"allowJs": true,
-		"checkJs": false,
+		"checkJs": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
@@ -21,7 +21,7 @@
 			"$lib": ["./src/lib"],
 			"$lib/*": ["./src/lib/*"]
 		}
-	}
-	// "include": ["src/**/*"],
-	// "exclude": ["node_modules", "build/**/*"]
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "build/**/*"]
 }

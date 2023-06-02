@@ -46,7 +46,7 @@
 		<span style="font-size: x-small;">
 			<img src="/logo.webp" alt="logo" width="300" />
 		</span>
-		<span>
+		<div>
 			<ExternalLink
 				url="https://fr.linkedin.com/in/julien-ilari-908ba7a1"
 				ariaLabel="Profil LinkedIn"
@@ -57,18 +57,30 @@
 				ariaLabel="Profil GitHub"
 				fa={{ icon: faGithub, color: '#567', size: '3x' }}
 			/>
-		</span>
+			<div style="z-index:11;position: absolute;">
+				{#if data?.user}
+					<form method="POST" action="?/logout">
+						<button type="submit">Log Out</button>
+					</form>
+				{:else}
+					<a href="/auth/login">Login</a>
+					<a href="/auth/register">Register</a>
+				{/if}
+			</div>
+		</div>
+		
 	</aside>
 	<nav id="header-nav" bind:this={navbar}>
 		{#each data?.menus as menu}
 			<a href={menu.url} aria-label={menu.label}>
 				<span class="menu">
-					<Fa icon={faGithub} size="2x" />
+					<Fa icon={menu.icon} size="2x" />
 					{menu.label}
 				</span>
 			</a>
 		{/each}
 	</nav>
+	
 </header>
 
 <!-- Votre contenu ici -->

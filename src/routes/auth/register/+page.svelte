@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	// Importer les dépendances nécessaires
 	import { createEventDispatcher } from 'svelte';
 	let dispatch = createEventDispatcher();
@@ -9,7 +9,7 @@
 
 	function signup() {
 		dispatch('signup', {
-			username,
+			username : '',
 			email,
 			password
 		});

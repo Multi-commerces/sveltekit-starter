@@ -1,12 +1,10 @@
 <script>
-	import Article from '../../components/Article.svelte';
+	// @ts-nocheck
+	import Article from './../../components/Article.svelte';
 	import { onMount } from 'svelte';
-	import Field from '../../components/TextField.svelte';
+	import TextField from './../../components/TextField.svelte';
 
-	/** @type {import('./$types').ActionData} */
 	export let form;
-
-	/** @type {import('./$types').Data} */
 	export let data;
 
 	let tel = '(+33) 6 00 01 02';
@@ -35,13 +33,13 @@
 		<fieldset>
 			<legend>Vos coordonnées</legend>
 
-			<Field label="Mail" bind:value={email} />
-			<Field label="Tel" bind:value={tel} />
+			<TextField label="Mail" bind:value={email} />
+			<TextField label="Tel" bind:value={tel} />
 		</fieldset>
 		<fieldset>
 			<legend>Votre message</legend>
-			<Field name="subject" label="Objet" bind:value={subject} />
-			<Field label="Message" bind:value={message} />
+			<TextField name="subject" label="Objet" bind:value={subject} />
+			<TextField label="Message" bind:value={message} />
 		</fieldset>
 
 		<div>

@@ -1,3 +1,4 @@
+import { faCogs, faEnvelope, faFile, faHome } from '@fortawesome/free-solid-svg-icons';
 import type { LayoutServerLoad } from './$types';
 export const load: LayoutServerLoad = async ({ url, locals }) => {
 	const { user }: any = locals;
@@ -5,22 +6,22 @@ export const load: LayoutServerLoad = async ({ url, locals }) => {
 	const pathname = url.pathname ?? '/';
 	const menus = [
 		{
-			icon: 'home',
+			icon: faHome,
 			label: 'Accueil',
 			url: '/'
 		},
 		{
-			icon: 'science',
+			icon: faFile,
 			label: 'Mon CV',
 			url: '/cv'
 		},
 		{
-			icon: 'contact_support',
+			icon: faEnvelope,
 			label: 'Contact',
 			url: '/contact'
 		},
 		{
-			icon: 'sdf',
+			icon: faCogs,
 			label: 'CMS config.',
 			url: '/cms'
 		}
