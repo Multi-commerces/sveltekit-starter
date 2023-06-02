@@ -15,6 +15,7 @@
 		navbar.classList.remove('hidden');
 	}
 
+	import { setContext } from 'svelte';
 	onMount(() => {
 		let prevScrollpos = window.pageYOffset;
 		window.onscroll = function () {

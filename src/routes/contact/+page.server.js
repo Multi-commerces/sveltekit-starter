@@ -2,7 +2,7 @@ import * as SibApiV3Sdk from '@sendinblue/client';
 
 // exemple https://github.com/sveltejs/kit/blob/master/documentation/docs/20-core-concepts/30-form-actions.md
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ cookies }) {
+export async function load({ cookies, locals }) {
 	let message = cookies.get('lastMessage');
 
 	return { email: 'julien.ilari@gmail.com', message: `dernier message ${message}` };
