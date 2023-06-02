@@ -1,8 +1,6 @@
 <script>
-	import { moduleRegistry } from '../../modules/ModuleRegistry';
+	import { moduleRegistry } from '../../../modules/ModuleRegistry';
 	import { onMount } from 'svelte';
-
-	// export let data;
 
 	// Choisissez le module à charger en fonction des préférences de l'utilisateur
 	let ContactModule;
@@ -21,4 +19,5 @@
 	<p>Loading...</p>
 {:then module}
 	<svelte:component this={module} />
+	<slot />
 {/await}

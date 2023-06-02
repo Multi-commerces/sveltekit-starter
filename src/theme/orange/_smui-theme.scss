@@ -29,10 +29,10 @@
 	--mdc-theme-text-hint-on-dark: rgba(255, 255, 255, 0.5);
 	--mdc-theme-text-disabled-on-dark: rgba(255, 255, 255, 0.5);
 	--mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);
-  }
-  
-  /* Layout grid spacing. */
-  :root {
+}
+
+/* Layout grid spacing. */
+:root {
 	--mdc-layout-grid-margin-desktop: 24px;
 	--mdc-layout-grid-gutter-desktop: 24px;
 	--mdc-layout-grid-column-width-desktop: 72px;
@@ -42,7 +42,7 @@
 	--mdc-layout-grid-margin-phone: 16px;
 	--mdc-layout-grid-gutter-phone: 16px;
 	--mdc-layout-grid-column-width-phone: 72px;
-  }
+}
 
 html,
 body {
@@ -56,4 +56,3 @@ a {
 a:visited {
 	color: color-palette.$blue-800;
 }
-

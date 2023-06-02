@@ -56,11 +56,9 @@
 		background: #4d8094;
 	}
 
-
 	.card:nth-child(3) h2 {
 		background: #1e8b67;
 	}
-
 
 	.card {
 		position: relative;

@@ -196,7 +196,6 @@
 		}
 	}
 
-	
 	@media screen and (min-width: 801px) {
 		.w3-third-test {
 			width: 33.33333%;

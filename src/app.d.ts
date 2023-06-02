@@ -8,6 +8,10 @@ declare namespace App {
 	// interface Platform {}
 	// interface Session {}
 	// interface Stuff {}
+	interface Error {
+		code: string;
+		id: string;
+	}
 }
 
 declare module '@fortawesome/pro-solid-svg-icons/index.es' {

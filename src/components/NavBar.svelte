@@ -5,7 +5,7 @@
 	import TabBar from '@smui/tab-bar';
 
 	export let tabs: any;
-	export let active:any;
+	export let active: any;
 </script>
 
 <nav>

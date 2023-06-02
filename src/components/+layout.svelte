@@ -77,9 +77,9 @@
 			?.insertAdjacentElement('afterend', themeLink);
 	}
 
-	onMount(() =>{
+	onMount(() => {
 		switchTheme();
-	})
+	});
 </script>
 
 <TopAppBar bind:this={topAppBar} style="display : table-row;">
@@ -194,7 +194,7 @@
 	}
 	main {
 		border-radius: 2rem;
-		margin-top: 32vH !important;
+		margin-top: 32vh !important;
 		/* background-color: rgba(185, 185, 185, 0.8); */
 		margin: auto;
 		min-height: calc(100vh - 170px);
@@ -299,7 +299,7 @@
 			position: absolute;
 			bottom: 0;
 			width: 100%;
-			color : rgba(255, 255, 255, 0.7) !important
+			color: rgba(255, 255, 255, 0.7) !important;
 		}
 
 		footer > .flex-container {
