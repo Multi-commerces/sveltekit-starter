@@ -31,10 +31,12 @@ async function getUserByIdFromToken(token) {
 	console.log('calling getUserByIdFromToken');
 	try {
 		const decodedToken = await verifyJwt(token);
-		console.log(' |-> decodedToken ' + decodedToken);
-		const userId = decodedToken.payload.id;
-		console.log(' |-> userId ' + userId);
+		if (!decodedToken) {
+			console.log(' |-> token invalided');
+			return null;
+		}
 
+		const userId = decodedToken.payload.id;
 		const user = await db.user.findUnique({
 			where: {
 				id: userId
@@ -44,6 +46,9 @@ async function getUserByIdFromToken(token) {
 				email: true
 			}
 		});
+
+		console.log(' |-> decodedToken ' + decodedToken);
+		console.log(' |-> user.id (bdd) ' + user?.id);
 
 		return user;
 	} catch (error) {
