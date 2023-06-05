@@ -1,8 +1,14 @@
+<script lang="ts">
+	import { page } from '$app/stores';
+
+	const p:any = $page;
+</script>
+
 <div style="margin:auto;width: 100%;">
 	<div id="background" />
 	<div class="top">
-		<h1>404</h1>
-		<h3>page not found</h3>
+		<h1>{p.status}</h1>
+		<h3>{p.error.message}</h3>
 	</div>
 	<div class="container">
 		<div class="ghost-copy">
@@ -21,9 +27,9 @@
 		<div class="shadow" />
 	</div>
 	<div class="bottom">
-		<p>
+		<p style="color:white !important">
 			Boo, looks like a ghost stole this page! <br />
-			Boo, il semblerait qu'un fantôme a volé cette page !
+			Boo, il semblerait qu'une erreur fantôme a volé cette page !
 		</p>
 		<div class="buttons">
 			<button class="btn">Back</button>

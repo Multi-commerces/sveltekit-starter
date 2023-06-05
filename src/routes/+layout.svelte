@@ -14,8 +14,6 @@
 	function showNavbar() {
 		navbar.classList.remove('hidden');
 	}
-
-	import { setContext } from 'svelte';
 	onMount(() => {
 		let prevScrollpos = window.pageYOffset;
 		window.onscroll = function () {
@@ -46,94 +44,93 @@
 		<span style="font-size: x-small;">
 			<img src="/logo.webp" alt="logo" width="300" />
 		</span>
-		<div>
+
+		<div style="position: absolute;right:2rem;">
+			{#if data?.user}
+				<form method="POST" action="?/logout">
+					<button type="submit">Log Out</button>
+				</form>
+			{:else}
+				<a href="/auth/login">Login</a>
+				<!-- <a href="/auth/register">Register</a> -->
+			{/if}
+		</div>
+		<section id="footer-external-links" style="position: absolute;top:2rem;right:1rem;">
 			<ExternalLink
 				url="https://fr.linkedin.com/in/julien-ilari-908ba7a1"
 				ariaLabel="Profil LinkedIn"
-				fa={{ icon: faLinkedin, color: '#567', size: '3x' }}
+				fa={{ icon: faLinkedin, color: '#444', size: '3x' }}
 			/>
 			<ExternalLink
 				url="https://github.com/Multi-commerces"
 				ariaLabel="Profil GitHub"
-				fa={{ icon: faGithub, color: '#567', size: '3x' }}
+				fa={{ icon: faGithub, color: '#444', size: '3x' }}
 			/>
-			<div style="z-index:11;position: absolute;">
-				{#if data?.user}
-					<form method="POST" action="?/logout">
-						<button type="submit">Log Out</button>
-					</form>
-				{:else}
-					<a href="/auth/login">Login</a>
-					<a href="/auth/register">Register</a>
-				{/if}
-			</div>
-		</div>
-		
+		</section>
 	</aside>
-	<nav id="header-nav" bind:this={navbar}>
-		{#each data?.menus as menu}
-			<a href={menu.url} aria-label={menu.label}>
-				<span class="menu">
-					<Fa icon={menu.icon} size="2x" />
-					{menu.label}
-				</span>
-			</a>
-		{/each}
+	<!-- svelte-ignore a11y-no-redundant-roles -->
+	<nav bind:this={navbar} role="navigation">
+		<ul id="header-nav">
+			{#each data?.menus as menu}
+				<li>
+					<a href={menu.url} aria-label={menu.label}>
+						<span class="menu">
+							<Fa icon={menu.icon} size="2x" />
+							{menu.label}
+						</span>
+					</a>
+				</li>
+			{/each}
+		</ul>
 	</nav>
-	
 </header>
 
 <!-- Votre contenu ici -->
-<main
-	id="container-{$userPreferences.layout.name}"
-	style="background-color: {$userPreferences?.layout.bgColor};"
->
+<main style="">
 	<slot />
 </main>
 
 <footer>
-	<div class="footer-container">
-		<div>footer 1</div>
-		<div>footer 2</div>
-		<div>footer 3</div>
-		<div>footer 4</div>
-		<div>footer 5</div>
-		<div>footer 6</div>
-		<div>footer 7</div>
-		<div>footer 8</div>
-		<div>footer 9</div>
-	</div>
-	<small>Copyright © 2023 julien.ilari@gmail.com.</small>
+	
+	<section id="footer-internal-links">
+		<ul>
+			<li>footer 1</li>
+			<li>footer 2</li>
+			<li>footer 3</li>
+		</ul>
+	</section>
+	<small id="copyright">
+		<strong aria-label="copyright" aria-describedby="copyright-desc">Copyright</strong>
+		<span id="copyright-desc">© 2023 julien.ilari@gmail.com</span>
+	</small>
 </footer>
 
-<style lang="scss">
-	:global(html) {
+<style lang="scss" global>
+	html {
+		box-sizing: border-box;
+		-webkit-font-smoothing: antialiased;
 		-ms-text-size-adjust: 100%;
 		-webkit-text-size-adjust: 100%;
 	}
 
-	:global(body::before) {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
-		z-index: -1;
-		background-color: #2e2a2ab0;
-		opacity: 20%;
+	* {
+		box-sizing: inherit;
+		&:before,
+		&:after {
+			box-sizing: inherit;
+		}
 	}
 
-	:global(a) {
+	body {
+		position: absolute;
+	}
+
+	a {
 		text-decoration: none;
 	}
 
-	:global(.hidden) {
-		opacity: 0 !important;
-	}
-
 	/* Styles spécifiques pour le header */
-	header {
+	.container > header {
 		z-index: 10;
 		position: sticky;
 		top: 0;
@@ -141,65 +138,60 @@
 		left: 0;
 
 		aside {
-			background-color: #000000b2;
-			opacity: 90%;
 			display: flex;
 			flex-direction: row;
-			align-items: center;
 			justify-content: space-between;
 			padding: 0.5rem;
-			color: white;
 		}
 
 		/* Styles spécifiques pour le nav dans le header */
 		nav {
-			display: table;
-			table-layout: fixed;
-			height: 42px;
-			gap: 0.5rem;
-			min-width: 100%;
-			width: 100%;
-			background: #000000;
-			flex-wrap: wrap;
-			flex-direction: row;
-			align-content: center;
-			justify-content: space-around;
-
-			opacity: 1;
-			transition: opacity 0.5s ease-in-out;
-
-			.menu {
-				display: flex;
-				flex-direction: row;
-				justify-content: center;
+			ul {
+				width: 100%;
+				height: 42px;
+				margin-block: 0;
+				padding-inline-start: 0;
+				padding-inline-end: 0;
+				display: table;
+				table-layout: fixed;
 				gap: 0.5rem;
-				align-items: center;
-			}
+				flex-wrap: wrap;
+				flex-direction: row;
+				align-content: center;
+				justify-content: space-around;
+				background: #000000;
+				opacity: 1;
+				transition: opacity 0.5s ease-in-out;
 
-			a {
-				text-decoration: none;
-				color: #ffffff;
-				font-family: sans-serif;
-				font-size: 13px;
-				transition: 0.5s;
-				display: table-cell;
-				min-width: 100px;
-				width: 100%;
-				vertical-align: middle;
-				text-align: center;
-			}
+				.menu {
+					display: flex;
+					flex-direction: row;
+					justify-content: center;
+					gap: 0.5rem;
+					align-items: center;
+				}
 
-			a::after {
-				content: '';
-				width: 100%;
-			}
+				li {
+					a {
+						text-decoration: none;
+						color: #ddd;
+						font-family: sans-serif;
+						font-size: 13px;
+					}
 
-			a:hover:first-child {
-				background: #336699;
-			}
+					transition: 0.5s;
+					display: table-cell;
+					vertical-align: middle;
+					text-align: center;
+				}
 
-			a:hover {
-				background: #c50e0eb0;
+				li:hover:first-child {
+					background: #336699;
+				}
+
+				li:hover {
+					background: #c50e0eb0;
+				}
 			}
 		}
 	}
@@ -209,30 +201,58 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-	}
-	main::before {
-		content: '';
-		position: fixed;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
-		z-index: -1;
-		background-color: #ff0000b0;
-		opacity: 10%;
+		background-color: rgb(236, 236, 236);
+		opacity: 90%;
 	}
 
 	/* Styles spécifiques pour le footer */
 	footer {
 		position: relative;
-		.footer-container {
-			min-height: 5rem;
-			height: 5rem;
+		display: flex;
+		flex-direction: column;
+		background-color: #444444; /* Couleur intermédiaire */
+		color: #ffffff; /* Couleur intermédiaire */
+
+		#footer-external-links {
+			padding: 1rem;
+		}
+
+		#footer-internal-links {
+			flex: 1;
+			ul {
+				column-count: 3;
+				li {
+					list-style: none;
+				}
+			}
+
 			background-color: #000000;
-			color: aliceblue;
-			column-count: 3;
-			column-gap: 1rem;
+
 			text-align: center;
 		}
+
+		#copyright {
+			height: 1.5rem;
+			vertical-align: middle;
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			flex-wrap: wrap;
+		}
+	}
+
+	input[type='submit']:hover {
+		background-color: #45a049;
+	}
+
+	input[type='submit'] {
+		background: rgb(255, 255, 255);
+		background-color: #04aa6d;
+		color: white;
+		padding: 0.5rem;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		float: right;
 	}
 </style>

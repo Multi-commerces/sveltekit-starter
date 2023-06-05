@@ -9,8 +9,8 @@ declare namespace App {
 	// interface Session {}
 	// interface Stuff {}
 	interface Error {
-		code: string;
-		id: string;
+		code?: string;
+		id?: string;
 	}
 }
 

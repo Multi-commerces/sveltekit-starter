@@ -1,8 +1,7 @@
-import { redirect } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 
-/** @type {import('./$types').PageServerLoad} */
 export async function load({ locals }) {
-	const { user } = locals;
+	const { user }: any = locals;
 
 	const authorized = ['admin'];
 	const isAuthorized = user?.roles
@@ -10,10 +9,6 @@ export async function load({ locals }) {
 		: false;
 
 	// if (!isAuthorized) {
-	// 	throw redirect(302, '/auth/sign_in?referrer=/admin');
+	// 	throw error(401, 'Contenu réservé aux administrateurs du serveur');
 	// }
-
-	return {
-		message: 'Contenu réservé aux administrateurs du serveur.'
-	};
 }

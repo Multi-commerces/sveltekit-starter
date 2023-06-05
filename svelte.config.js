@@ -15,7 +15,9 @@ const config = {
 			checkOrigin: false
 		},
 		alias: {
-			$modules: path.resolve('./src/modules')
+			$modules: path.resolve('./src/modules'),
+			$components: path.resolve('./src/components'),
+			'@/components': path.resolve('./src/components')
 		}
 	},
 	// https://kit.svelte.dev/docs/configuration#csrf

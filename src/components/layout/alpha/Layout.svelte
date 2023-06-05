@@ -6,7 +6,7 @@
 </div>
 <slot />
 
-<style lang="scss">
+<style lang="scss" gloabal>
 	#alpha-container {
 		display: flex;
 		div {

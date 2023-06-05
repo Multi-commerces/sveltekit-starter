@@ -12,11 +12,20 @@
 	});
 </script>
 
-{#if showLayout}
-	<svelte:component this={showLayout}>
-		<slot />
-	</svelte:component>
-{:else}
-	<!-- Contenu spécifique à cette page sans la mise en page -->
-	Aucun layout prédéfinit
-{/if}
+<div id="container-{$userPreferences.layout.name}" style="background-color: {$userPreferences?.layout.bgColor};">
+	{#if showLayout}
+		<svelte:component this={showLayout}>
+			<slot />
+		</svelte:component>
+	{:else}
+		<!-- Contenu spécifique à cette page sans la mise en page -->
+		Aucun layout prédéfinit
+	{/if}
+</div>
+
+<style>
+	div 
+	{
+		height:100%;
+	}
+</style>

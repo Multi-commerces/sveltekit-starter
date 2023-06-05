@@ -12,6 +12,7 @@
 
 	export let withLeadingIcon;
 	export let withTrailingIcon;
+	export let required = false;
 
 	onMount(() => {
 		if (label) {
@@ -26,9 +27,14 @@
 	{/if}
 
 	{#if withLeadingIcon || withTrailingIcon}
-		<input {name} aria-label={label} type="text" {placeholder} bind:value />
+		<input type="text" {name} aria-label={label} {placeholder} bind:value />
 	{:else}
-		<span><label for="name">{label}</label></span>
+		<span>
+			<label for="name">
+				{label} 
+				{#if required}<abbr title="required">*</abbr>{/if}
+			</label>
+		</span>
 		<input type="text" id={name} {name} title={label} {placeholder} bind:value />
 	{/if}
 
@@ -120,19 +126,6 @@
 				background: var(--group-background-focus);
 				border-color: var(--group-border-focus);
 			}
-		}
-	}
-
-	:gloabl(html) {
-		box-sizing: border-box;
-		-webkit-font-smoothing: antialiased;
-	}
-
-	:gloabl(*) {
-		box-sizing: inherit;
-		&:before,
-		&:after {
-			box-sizing: inherit;
 		}
 	}
 

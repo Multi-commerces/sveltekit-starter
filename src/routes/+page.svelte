@@ -5,6 +5,8 @@
 	import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 	// @ts-ignore
 	import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
+	import Article from '@/components/Article.svelte';
+	import SocialCard from '@/components/SocialCard.svelte';
 
 	/**
 	 * @type {HTMLCanvasElement}
@@ -120,21 +122,18 @@
 	});
 </script>
 
-<!-- Reste du contenu du composant Svelte -->
-<canvas bind:this={canvas} id="canvas" width="800" height="600" style="position:absolute" />
-
 <article>
-	<header><h1>Bienvenue sur mon <strong>site web</strong></h1></header>
-	<div id="social-card">
-		<SocialCardHover icon={faLinkedin} title="LinkedIn" />
-		<SocialCardHover icon={faUserAstronaut} title="Moi" />
-		<SocialCardHover icon={faGithub} title="GitHub" />
+	<div id="social-card" style="z-index:10">
+		<SocialCard />
 	</div>
+
+	<!-- Reste du contenu du composant Svelte -->
+	<canvas bind:this={canvas} id="canvas"  style="position:absolute" />
 </article>
 
 <style global>
 	@media (max-width: 1250px) {
-		#social-card  {
+		#social-card {
 			display: flex;
 			flex-direction: column;
 			align-items: center;

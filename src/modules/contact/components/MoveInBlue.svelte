@@ -1,7 +1,7 @@
 <script>
 	import Article from '../../../components/Article.svelte';
 	import { onMount } from 'svelte';
-	import Field from '../../../components/TextField.svelte';
+	import Field from '../../../components/common/TextField.svelte';
 
 	/** @type {import('./$types').ActionData} */
 	export let form;

@@ -63,6 +63,7 @@
 	.card {
 		position: relative;
 		border-radius: 0px;
+		z-index: 10;
 	}
 
 	.card .icon {
@@ -127,7 +128,7 @@
 		align-items: center;
 		padding: 20px;
 		box-sizing: border-box;
-		box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+		box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
 		transform: translateY(-100px);
 	}
 

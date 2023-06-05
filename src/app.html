@@ -6,6 +6,9 @@
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Julien ILARI, développeur web fullStack JAVA indépendant</title>
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
 		<!-- Material Icons -->
 		<link
 			rel="preload"
@@ -16,20 +19,18 @@
 		<noscript>
 			<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 		</noscript>
-
-		%sveltekit.head%
-
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 			@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
 			@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-
 			html,
 			body {
 				margin: 0;
 				padding: 0;
 			}
 		</style>
+
+		%sveltekit.head%
 	</head>
 
 	<body data-sveltekit-preload-data="tap">

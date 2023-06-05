@@ -4,11 +4,13 @@
 	export let title: string;
 </script>
 
-<article style="padding:1rem;color:white">
+<article style="padding:1rem">
 	{#if faIcon}
 		<Fa icon={faIcon} color="#ff2f00" style="display:inline-block" />
 	{/if}
-	<span>{title}</span>
+	<header>
+		<h1>{title}</h1>
+	</header>
 	<span class="line" />
 	<slot />
 </article>

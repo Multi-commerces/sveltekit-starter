@@ -19,9 +19,6 @@
 		selected = { layout: $userPreferences.layout.name };
 	});
 
-	$: if (userPreferences) {
-	}
-
 	let select = async () => {
 		switch (selected.layout) {
 			case 'mega':
@@ -66,5 +63,5 @@
 			<option value={option}>{option.layout}</option>
 		{/each}
 	</select>
-	<a href="/contact/mod" title="page de test">Tester le layout ici</a>
+	<a href="/test" title="page de test">Tester le layout ici</a>
 </Article>

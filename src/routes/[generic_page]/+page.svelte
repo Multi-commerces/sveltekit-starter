@@ -1,24 +1,7 @@
-<script>
-	import { moduleRegistry } from '../../modules/ModuleRegistry';
-	import { onMount } from 'svelte';
-
-	// export let data;
-
-	// Choisissez le module à charger en fonction des préférences de l'utilisateur
-	let ContactModule;
-	const preferredModule = { name: 'moveInBlue' }; // Exemple de préférence de module
-	onMount(async () => {
-		let moduleName =
-			preferredModule?.name && moduleRegistry.contact[preferredModule.name]
-				? preferredModule.name
-				: 'default';
-
-		ContactModule = (await moduleRegistry.contact[moduleName]()).default;
-	});
-</script>
-
-{#await ContactModule}
-	<p>Loading...</p>
-{:then module}
-	<svelte:component this={module} />
-{/await}
+<h1>En construction</h1>
+<div>
+	<img
+		src="https://gif.toutimages.com/images/webmaster/construction/construction_036.gif"
+		alt="en construction"
+	/>
+</div>
