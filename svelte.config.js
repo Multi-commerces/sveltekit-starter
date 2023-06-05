@@ -6,10 +6,14 @@ import path from 'path';
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: preprocess(),
+	preprocess: preprocess({
+		preserve: ['ld+json']
+		// ...
+	}),
 
 	// https://kit.svelte.dev/docs/configuration
 	kit: {
+		inlineStyleThreshold: Infinity,
 		adapter: adapter(),
 		csrf: {
 			checkOrigin: false

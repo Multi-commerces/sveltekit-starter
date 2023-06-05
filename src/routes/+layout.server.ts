@@ -12,7 +12,7 @@ export const load: LayoutServerLoad = async ({ url, locals }) => {
 		},
 		{
 			icon: faFile,
-			label: 'Mon CV',
+			label: 'CV',
 			url: '/cv'
 		},
 		{
@@ -22,7 +22,7 @@ export const load: LayoutServerLoad = async ({ url, locals }) => {
 		},
 		{
 			icon: faCogs,
-			label: 'CMS config.',
+			label: 'CMS',
 			url: '/cms'
 		}
 	];
@@ -30,14 +30,7 @@ export const load: LayoutServerLoad = async ({ url, locals }) => {
 	// Recherche de l'élément de menu correspondant à la `pathname`
 	const active = menus.find((menu) => menu.url === pathname) || menus[0];
 	console.log('############ LAYOUT.SERVER.TS ###############');
-	console.log(
-		JSON.stringify({
-			pathname,
-			user,
-			active
-		})
-	);
-	// console.log('############# END LAYOUT.SERVER.TS ################');
+	console.log(' |-> json => data.user : ' + JSON.stringify({ user }));
 	return {
 		pathname,
 		context: locals,

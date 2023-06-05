@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 
-export const load = async (event) => {
+export const load = async (event: any) => {
 	const user = event.locals?.user;
 	if (!user) return { user: null };
 	delete user.token;

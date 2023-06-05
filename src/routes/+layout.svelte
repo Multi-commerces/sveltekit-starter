@@ -42,29 +42,29 @@
 <header>
 	<aside style="background-color: white;">
 		<span style="font-size: x-small;">
-			<img src="/logo.webp" alt="logo" width="300" />
+			<img id="logo" src="/logo.webp" alt="logo" width="300" />
 		</span>
 
-		<div style="position: absolute;right:2rem;">
+		<div style="position: absolute;right:2rem;" aria-hidden="true">
 			{#if data?.user}
 				<form method="POST" action="?/logout">
-					<button type="submit">Log Out</button>
+					<button type="submit">Se déconnecter</button>
 				</form>
 			{:else}
-				<a href="/auth/login">Login</a>
+				<a href="/auth/login">Connexion</a>
 				<!-- <a href="/auth/register">Register</a> -->
 			{/if}
 		</div>
-		<section id="footer-external-links" style="position: absolute;top:2rem;right:1rem;">
+		<section style="position: absolute;top:2rem;right:1rem;">
 			<ExternalLink
 				url="https://fr.linkedin.com/in/julien-ilari-908ba7a1"
 				ariaLabel="Profil LinkedIn"
-				fa={{ icon: faLinkedin, color: '#444', size: '3x' }}
+				fa={{ icon: faLinkedin, color: '#444', size: '2x' }}
 			/>
 			<ExternalLink
 				url="https://github.com/Multi-commerces"
 				ariaLabel="Profil GitHub"
-				fa={{ icon: faGithub, color: '#444', size: '3x' }}
+				fa={{ icon: faGithub, color: '#444', size: '2x' }}
 			/>
 		</section>
 	</aside>
@@ -91,7 +91,6 @@
 </main>
 
 <footer>
-	
 	<section id="footer-internal-links">
 		<ul>
 			<li>footer 1</li>
@@ -106,23 +105,14 @@
 </footer>
 
 <style lang="scss" global>
-	html {
-		box-sizing: border-box;
-		-webkit-font-smoothing: antialiased;
-		-ms-text-size-adjust: 100%;
-		-webkit-text-size-adjust: 100%;
-	}
-
-	* {
-		box-sizing: inherit;
-		&:before,
-		&:after {
-			box-sizing: inherit;
-		}
-	}
-
 	body {
 		position: absolute;
+
+		@media (max-width: 1000px) {
+			#logo {
+				width: 200px;
+			}
+		}
 	}
 
 	a {
@@ -174,12 +164,12 @@
 				li {
 					a {
 						text-decoration: none;
-						color: #ddd;
-						font-family: sans-serif;
+						font-weight: bold;
+						color: azure;
 						font-size: 13px;
 					}
 
-					transition: 0.5s;
+					transition: 0.3s;
 					display: table-cell;
 					vertical-align: middle;
 					text-align: center;
@@ -201,7 +191,7 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		background-color: rgb(236, 236, 236);
+		background-color: rgb(241, 241, 241);
 		opacity: 90%;
 	}
 
@@ -212,10 +202,6 @@
 		flex-direction: column;
 		background-color: #444444; /* Couleur intermédiaire */
 		color: #ffffff; /* Couleur intermédiaire */
-
-		#footer-external-links {
-			padding: 1rem;
-		}
 
 		#footer-internal-links {
 			flex: 1;
@@ -241,18 +227,12 @@
 		}
 	}
 
-	input[type='submit']:hover {
-		background-color: #45a049;
-	}
-
 	input[type='submit'] {
-		background: rgb(255, 255, 255);
-		background-color: #04aa6d;
+		background-color: #1255a2;
 		color: white;
-		padding: 0.5rem;
+		padding: 12px 20px;
 		border: none;
 		border-radius: 4px;
 		cursor: pointer;
-		float: right;
 	}
 </style>

@@ -1,11 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import SocialCardHover from '../components/SocialCardHover.svelte';
-	// @ts-ignore
-	import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-	// @ts-ignore
-	import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
-	import Article from '@/components/Article.svelte';
 	import SocialCard from '@/components/SocialCard.svelte';
 
 	/**
@@ -32,12 +26,6 @@
 	const numBalls = imagePaths.length;
 	// @ts-ignore
 	const balls = [];
-
-	// @ts-ignore
-	function onResize() {
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-	}
 
 	onMount(() => {
 		canvas.width = window.innerWidth;
@@ -109,8 +97,8 @@
 					ball.image,
 					ball.x - ball.radius,
 					ball.y - ball.radius,
-					ball.radius * 2,
-					ball.radius * 2
+					ball.radius * 1.2,
+					(ball.radius - 10) * 1.2
 				);
 			});
 
@@ -128,7 +116,7 @@
 	</div>
 
 	<!-- Reste du contenu du composant Svelte -->
-	<canvas bind:this={canvas} id="canvas"  style="position:absolute" />
+	<canvas bind:this={canvas} id="canvas" style="position:absolute" />
 </article>
 
 <style global>
@@ -151,6 +139,7 @@
 		left: 0;
 		top: 0;
 		max-width: 100%;
+		height: 100%;
 	}
 
 	.ball {

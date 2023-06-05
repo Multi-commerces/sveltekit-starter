@@ -5,7 +5,7 @@
 </script>
 
 <div class="cards">
-	<h1>Connectez-vous et restez en contact</h1>
+	<h1>Restez en contact</h1>
 	<div class="services">
 		<div class="content content-1">
 			<div class="fab">
@@ -48,7 +48,7 @@
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
-		font-family: 'Montserrat', sans-serif;
+		/* font-family: 'Montserrat', sans-serif; */
 	}
 	.cards {
 		/* max-width: 1100px; */
@@ -122,7 +122,7 @@
 	}
 	.content p {
 		font-size: 17px;
-		font-family: 'Poppins', sans-serif;
+		/* font-family: 'Poppins', sans-serif; */
 	}
 	.content a {
 		margin: 22px 0;
@@ -139,6 +139,13 @@
 		border-radius: 4px;
 	}
 	@media (max-width: 900px) {
+		.cards h1 {
+			font-size: initial;
+			margin: 0 0 5px 0;
+			text-transform: uppercase;
+			letter-spacing: 0px;
+		}
+
 		.services {
 			display: flex;
 			flex-direction: column;
