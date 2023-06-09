@@ -1,4 +1,10 @@
-import { faCogs, faEnvelope, faFile, faHome } from '@fortawesome/free-solid-svg-icons';
+import {
+	faCogs,
+	faEnvelope,
+	faFile,
+	faFileArchive,
+	faHome
+} from '@fortawesome/free-solid-svg-icons';
 import type { LayoutServerLoad } from './$types';
 export const load: LayoutServerLoad = async ({ url, locals }) => {
 	const { user }: any = locals;
@@ -19,6 +25,11 @@ export const load: LayoutServerLoad = async ({ url, locals }) => {
 			icon: faEnvelope,
 			label: 'Contact',
 			url: '/contact'
+		},
+		{
+			icon: faFile,
+			label: 'wiki',
+			url: '/wiki'
 		},
 		{
 			icon: faCogs,

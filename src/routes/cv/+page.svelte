@@ -1,14 +1,9 @@
 <script>
-	import Stack from '@/components/common/Stack.svelte';
-	import { faDochub } from '@fortawesome/free-brands-svg-icons';
 	import {
 		faAsterisk,
-		faBridge,
 		faBriefcase,
 		faCertificate,
-		faCheck,
 		faCheckCircle,
-		faDeafness,
 		faEnvelope,
 		faHome,
 		faPhone,
@@ -535,12 +530,12 @@
 		margin: 0;
 	}
 
-	aside {
-		h4 {
-			opacity: 0.6;
-			color: #0000b0 !important;
-		}
-	}
+	// aside {
+	// 	h4 {
+	// 		opacity: 0.6;
+	// 		color: #0000b0 !important;
+	// 	}
+	// }
 
 	h3 {
 		font-family: 'Segoe UI', Arial, sans-serif;

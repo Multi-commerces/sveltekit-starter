@@ -30,6 +30,6 @@
 			<input name="password" type="password" bind:value={password} required />
 		</label>
 
-		<button type="submit">S'inscrire</button>
+		<input type="submit" value="S'inscrire" />
 	</form>
 </main>

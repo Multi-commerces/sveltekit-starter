@@ -1,7 +1,7 @@
 <script>
 	import Article from '../../../components/Article.svelte';
 	import { onMount } from 'svelte';
-	import Field from '../../../components/common/TextField.svelte';
+	import TextField from '../../../components/common/TextField.svelte';
 
 	/** @type {import('./$types').ActionData} */
 	export let form;
@@ -18,36 +18,46 @@
 </script>
 
 <Article title="Me contacter">
-	<p>Bienvenue sur ma page de contact !</p>
 	<p>
-		Je suis ravi de vous offrir un moyen simple et pratique de me contacter pour toutes vos
-		questions, demandes de renseignements ou collaborations potentielles.
+		Bienvenue sur ma page de contact ! <br />
+		Je suis ravi de vous offrir un moyen simple et pratique de me contacter pour toutes vos questions,
+		demandes de renseignements ou collaborations potentielles.
 	</p>
 
-	{#if form?.success}
-		<p>Nous avons bien reçu votre message, merci !</p>
-		<p>{form?.message} ou {data?.message} email : {form?.email}</p>
-	{/if}
-	{#if form?.missing}<p class="error">The email field is required</p>{/if}
-	{#if form?.incorrect}<p class="error">Invalid credentials!</p>{/if}
+	<section>
+		{#if form?.success}
+			<p>Nous avons bien reçu votre message, merci !</p>
+			<p>{form?.message} ou {data?.message} email : {form?.email}</p>
+		{/if}
+		{#if form?.missing}<p class="error">The email field is required</p>{/if}
+		{#if form?.incorrect}<p class="error">Invalid credentials!</p>{/if}
+	</section>
 
-	<form method="POST" action="?/send">
-		<fieldset>
-			<legend>Vos coordonnées</legend>
+	<section>
+		<header>
+			<h2>Formulaire de contact</h2>
+		</header>
+		<form method="POST" action="?/send">
+			<fieldset>
+				<legend>Vos coordonnées</legend>
+				<!-- svelte-ignore missing-declaration -->
+				<TextField label="Mail" bind:value={email} />
+				<!-- svelte-ignore missing-declaration -->
+				<TextField label="Tel" bind:value={tel} />
+			</fieldset>
+			<fieldset>
+				<legend>Votre message</legend>
+				<!-- svelte-ignore missing-declaration -->
+				<TextField name="subject" label="Objet" bind:value={subject} />
+				<!-- svelte-ignore missing-declaration -->
+				<TextField label="Message" bind:value={message} />
+			</fieldset>
 
-			<Field label="Mail" bind:value={email} />
-			<Field label="Tel" bind:value={tel} />
-		</fieldset>
-		<fieldset>
-			<legend>Votre message</legend>
-			<Field name="subject" label="Objet" bind:value={subject} />
-			<Field label="Message" bind:value={message} />
-		</fieldset>
-
-		<div>
-			<input type="submit" value="Submit" />
-		</div>
-	</form>
+			<div style="margin-top:1rem">
+				<input type="submit" value="Envoyer" />
+			</div>
+		</form>
+	</section>
 
 	<div>
 		<p>
@@ -55,10 +65,9 @@
 			d'obtenir rapidement une réponse à vos question.
 		</p>
 		<p>
-			N'hésitez pas à utiliser le formulaire de contact ci-dessous ou à m'envoyer un e-mail
+			N'hésitez pas à utiliser le formulaire de contact ci-dessus ou à m'envoyer un e-mail
 			directement. Je suis impatient de vous aider et de répondre à toutes vos demandes.
 		</p>
-		<br />
 		<div>
 			Merci de votre intérêt et à bientôt !<br />
 			[Julien ILARI] - Freelance
@@ -69,20 +78,5 @@
 <style>
 	:global(label) {
 		margin-top: 1rem;
-	}
-
-	input[type='submit']:hover {
-		background-color: #45a049;
-	}
-
-	input[type='submit'] {
-		background: rgb(255, 255, 255);
-		background-color: #04aa6d;
-		color: white;
-		padding: 0.5rem;
-		border: none;
-		border-radius: 4px;
-		cursor: pointer;
-		float: right;
 	}
 </style>

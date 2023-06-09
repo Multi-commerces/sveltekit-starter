@@ -1,21 +1,7 @@
-import db from '../prisma/db';
+import db from './lib/server/db';
 import verifyJwt from './lib/server/validate-jwt';
 
 const unProtectedRoutes = ['/', '/login', '/auth/sign_in', '/auth/sign_up'];
-
-// custom redirect from joy of code `https://github.com/JoysOfCode/sveltekit-auth-cookies/blob/migration/src/hooks.ts`
-/**
- *
- * @param location
- * @param body
- * @returns
- */
-function redirect(location: string, body: any) {
-	return new Response(body, {
-		status: 303,
-		headers: { location }
-	});
-}
 
 function superLog(event: any) {
 	let route = event.route;
