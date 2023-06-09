@@ -13,6 +13,7 @@ const saltRounds = 12;
  * @returns
  */
 export async function createUserWithEmailAndPassword(email: string, password: string) {
+	console.log('call createUserWithEmailAndPassword');
 	try {
 		const has = await bcrypt.hash(password, saltRounds);
 		console.log('has : ' + has);
@@ -64,6 +65,7 @@ export async function loginUser(email: string, password: string) {
 }
 
 export async function searchUsers() {
+	console.log('call searchUsers');
 	return await prisma.user.findMany();
 }
 

@@ -1,18 +1,21 @@
-import { createUserWithEmailAndPassword } from '../../../lib/server/users';
+import { createUserWithEmailAndPassword } from '$lib/server/users';
 import { fail, redirect } from '@sveltejs/kit';
 import { setAuthToken } from '../helper';
 
 // /** @type {import('./$types').Actions} */
 export const actions = {
 	default: async ({ cookies, request }) => {
-		const formData = Object.fromEntries(await request.formData());
-		const { email, password } = formData;
+		console.log('## ACTION REGISTER#');
+		const data = await request.formData();
+		const email = data.get('email');
+		const password = data.get('password');
+		console.warn(' |=> Email : ' + email);
 
-		console.log('Tentative de création d un nouvel utilisateur : ' + email);
-		const result: { error?: any; token?: any } = await createUserWithEmailAndPassword(
-			email,
-			password
-		);
+		if (!email) {
+			return { success: false };
+		}
+
+		const result: any = await createUserWithEmailAndPassword(email, password);
 		const { error, token } = result;
 
 		if (error) {

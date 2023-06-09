@@ -15,12 +15,17 @@ https://cweili.github.io/svelte-fa/
 
 # initialisation BBD avec prisma
 
-Installation du CLI : npm install prisma --save-dev
-Initialisation : prisma init --datasource-provider sqlite
+Installation du CLI : 
+npm install prisma --save-dev
+
+Initialisation : 
+prisma init --datasource-provider sqlite
 
 prisma migrate dev --name init
 ou
 prisma generate ./prisma/schema.prisma
+
+reset : prisma migrate reset
 
 ✔ Installed the @prisma/client and prisma packages in your project
 
